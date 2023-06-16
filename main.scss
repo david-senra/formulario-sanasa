@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     list-style: none;
+    scroll-padding-top: 20px;
 }
 
 .container {
@@ -33,7 +34,7 @@ label {
 
 .form {
     margin-top: 60px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -104,12 +105,20 @@ label {
 }
 
 .li-contrato {
-    width: 401px;
+    padding-left: 32px;
     text-align: end;
 }
 
 .label-contrato {
     padding-right: 5px;
+}
+
+#lista-contrato-partilha {
+    padding-bottom: 30px;
+}
+
+#what {
+    padding-left: 16px;
 }
 
 h3 {
@@ -163,6 +172,7 @@ select {
     width: 250px;
     margin-left: 50px;
     border-radius: 5px;
+    margin-top: 20px;
 
     &:hover {
         background-color: green;
@@ -204,6 +214,11 @@ select {
     text-align: center;
 }
 
+.div-do-envio {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
 .party {
     background-image: url(./birthday-party.png);
     background-size:contain;
@@ -218,11 +233,6 @@ select {
     font-size: 12px;
     text-align: center;
     margin-top: -8px;
-
-    &--extra {
-        width: 300px;
-        padding-left: 35px;
-    }
 }
 
 .loucura {

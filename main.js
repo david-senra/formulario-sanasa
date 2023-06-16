@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             temContratoParticular = false;
             temContratoParticularEmLei = false;
         }
-        else if (stateContratoParticular[0].value === 'Regulado por Lei') {
+        else if (stateContratoParticular[0].value === 'regulado pela Lei') {
             listaEscrituraPublica[0].classList.add('hide');
             listaContratoParticular[0].classList.remove('hide');
             listaContratoPartilha[0].classList.add('hide');
@@ -131,6 +131,7 @@ function generate() {
     })
     const inputsarray = Array.from(todosInputs);
     let contador = 0;
+    const inputsArrayComErros = [];
     inputsarray.forEach(input => {
         if (input.offsetParent !== null && input.value == '') {
             var newElement = document.createElement('div')
@@ -151,9 +152,11 @@ function generate() {
                 elem.remove();
                 mensagemErroDois.classList.remove('error-two--active')
             })
-        } 
+            inputsArrayComErros.push(input);
+        }
     })
     if (contador > 0) {
+        (inputsArrayComErros[0]).closest('.section').scrollIntoView({ behavior: 'smooth'})
         return;
     }
     loadFile(

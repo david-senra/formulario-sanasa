@@ -22,7 +22,7 @@
                     <ul class="dados-basicos-grupo grupo">
                         <div>
                             <ul class="dados-basicos-grupo-lista lista">
-                                <li><label>Nome: </label><input id='1' class="inputs obrig" type="text"></li>
+                                <li><label>Nome Completo: </label><input id='1' class="inputs obrig" type="text"></li>
                                 <li><label>Nacionalidade: </label><input id='2' class="inputs obrig" type="text"></li>
                                 <li><label>Profissão: </label><input id='3' class="inputs obrig" type="text"></li>
                                 <li><label>RG: </label><input id='4' class="inputs obrig" type="text"></li>
@@ -96,7 +96,7 @@
                             <ul class="dados-protocolados-grupo-lista lista">
                                 <h3 class="title-subgroup h3-protocolo">Dados de Protocolo</h3>
                                 <li><label>Nº de Protocolo Sanasa: </label><input id='18' class='inputs' type="text"></li>
-                                <li><label>Data do Protocolo: </label><input id= '19' class='inputs' type="text"></li>
+                                <li><label>Data do Protocolo: </label><input id= '19' class='inputs' type="date" name="date" pattern=""></li>
                                 <li><label>Requerente: </label><input id='20' class='inputs' type="text"></li>
                             </ul>
                         </div>
@@ -116,7 +116,14 @@
                                 <li><label>Quadra: </label><input id='22' class='inputs' type="text"></li>
                                 <li><label>Quarteirão: </label><input id='23' class='inputs' type="text"></li>
                                 <li><label>Nº Código do Consumidor: </label><input id='27' class='inputs' type="text"></li>
-                                <li><label>Localização da Faixa/Servidão Sanitária: </label><input id='28' class='inputs' type="text"></li>
+                                <li><label>Localização da Faixa/Servidão Sanitária: </label>
+                                    <select id='28' class='inputs' style="width: 250px;" type="text" value="--">
+                                        <option value="" selected disabled hidden>Selecione:</option>
+                                        <option value="na lateral da propriedade">Lateral do Lote</option>
+                                        <option value="no meio da propriedade">Meio do Lote</option>
+                                        <option value="no fundo da propriedade">Fundo do Lote</option>
+                                    </select>
+                                </li>
                             </ul>
                         </div>
                     </ul>
@@ -125,16 +132,20 @@
             <section class="section" id="tipo-contrato">
                 <div class="tipo-contrato-div wrapper">
                     <h2>Dados do Contrato</h2>
-                    <div class="div-lista">
-                        <ul class="tipo-contrato-lista lista">
-                            <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel: </label>
-                                <select id='30' class="select-contrato-imovel inputs" style="width: 250px;" type="text" value="--">
-                                    <option value="" selected disabled hidden>Selecione:</option>
-                                    <option value="Escritura Pública">Escritura Pública</option>
-                                    <option value="Forma de Partilha">Forma de Partilha</option>
-                                    <option value="Contrato Particular">Contrato Particular</option>
-                                </select>
-                            </li>
+                    <div class="div-lista lista">
+                        <ul class="tipo-contrato-grupo grupo">
+                            <div>
+                                <ul class="tipo-contrato-lista lista">
+                                    <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel: </label>
+                                        <select id='30' class="select-contrato-imovel inputs" style="width: 250px;" type="text" value="--">
+                                            <option value="" selected disabled hidden>Selecione:</option>
+                                            <option value="Escritura Pública">Escritura Pública</option>
+                                            <option value="Forma de Partilha">Forma de Partilha</option>
+                                            <option value="Contrato Particular">Contrato Particular</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
                         </ul>
                         <ul class="tipo-contrato-grupo grupo">
                             <div class="div-contrato-escritura hide">
@@ -154,40 +165,42 @@
                                     <li><label>Livro do Contrato: </label><input id='35' class='inputs' type="text"></li>
                                 </ul>
                             </div>
-                            <div id="div-contrato-partilha" class="div-contrato-partilha hide">
-                                <ul class="tipo-contrato-partilha lista">
-                                    <li><label>Nº da Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
-                                    <li><label>Comarca: </label><input id='37' class='inputs' type="text"></li>
-                                </ul>
-                            </div>
                             <div>
                                 <ul class="tipo-contrato-demais-dados lista">
                                     <div class="div-contrato-particular hide">
                                         <ul class="tipo-contrato-particular lista">
-                                            <li><label>Tipo de Contrato Particular: </label>
+                                            <li><label>Tipo de Contrato: </label>
                                                 <select id='38' class="select-contrato-particular inputs" style="width: 250px;" type="text" value="--">
                                                     <option value="" selected disabled hidden>Selecione:</option>
-                                                    <option value="Promessa de Compra e Venda">Promessa de Compra e Venda</option>
-                                                    <option value="Regulado por Lei">Regulado Por Lei</option>
+                                                    <option value="de Promessa de Compra e Venda">Promessa de Compra e Venda</option>
+                                                    <option value="regulado pela Lei">Regulado Por Lei</option>
                                                     <option value="de Permuta">De Permuta</option>
                                                 </select>
                                             </li>
                                         </ul>
                                     </div>
                                     <li class="lista-lei hide"><label>Nº da Lei: </label><input id='39' class='inputs' type="text"></li>
-                                    <li><label>Data do Contrato: </label><input id='40' class='inputs' type="text"></li>
+                                    <div id="div-contrato-partilha" class="div-contrato-partilha hide">
+                                        <ul id="lista-contrato-partilha" class="tipo-contrato-partilha lista">
+                                            <li><label>Nº da Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
+                                            <li><label>Comarca: </label><input id='37' class='inputs' type="text"></li>
+                                        </ul>
+                                    </div>
+                                    <li><label>Data do Contrato: </label><input id='40' class='inputs' type="date" name="date" pattern="\d{2}/\d{2}/\d{4}"></li>
                                     <li><label>Número do Cartório: </label><input id='41' class='inputs' type="text"></li>
                                     <li><label>Município: </label><input id='42' class='inputs' type="text"></li>
-                                    <li><label>Transcrição/Matrícula: </label><input id='43' class='inputs' type="text"></li>
+                                    <li id="what"><label>Transcrição/Matrícula: </label><input id='43' class='inputs' type="text"></li>
                                 </ul>
                             </div>
                         </ul>
                     </div>
                 </div>
             </section>
-            <button class="botao-gerar" type="button">Gerar Contrato</button>
-            <h3 id="erro-maior" class="error-two">Para gerar o contrato, preencha corretamente todos os campos.</h3>
         </form>
+        <div class="div-do-envio">
+            <h3 id="erro-maior" class="error-two">Para gerar o contrato, preencha corretamente todos os campos.</h3>
+            <button class="botao-gerar" type="button">Gerar Contrato</button>
+        </div>
         <div class="div-da-vitoria">
             <h2 class="success-message hide">Arquivo de contrato gerado com sucesso, Stubbert! Clique no botão para fazer o download.</h2>
             <button class="botao-download hide" type="button">Baixar Contrato</button>
