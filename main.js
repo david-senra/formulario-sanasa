@@ -171,6 +171,15 @@ function generate() {
                 linebreaks: true,
             });
             console.log(stateEstadoCivil[0].value)
+            const data1 = document.getElementById('19').value.toString();
+            const data2 = document.getElementById('40').value.toString();
+
+            const first1 = data1.split("-");
+            const first2 = data2.split("-");
+
+            const data3 = first1[1] + "/" + first1[2] + "/" + first1[0];
+            const data4 = first2[1] + "/" + first2[2] + "/" + first2[0];
+
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...) 
             doc.render({
                 'casado': estaCasado,
@@ -197,7 +206,7 @@ function generate() {
                 '16': document.getElementById('16').value,
                 '17': document.getElementById('17').value,
                 '18': document.getElementById('18').value,
-                '19': document.getElementById('19').value,
+                '19': data3,
                 '20': document.getElementById('20').value,
                 '21': document.getElementById('21').value,
                 '22': document.getElementById('22').value,
@@ -218,7 +227,7 @@ function generate() {
                 '37': document.getElementById('37').value,
                 '38': document.getElementById('38').value,
                 '39': document.getElementById('39').value,
-                '40': document.getElementById('40').value,
+                '40': data4,
                 '41': document.getElementById('41').value,
                 '42': document.getElementById('42').value,
                 '43': document.getElementById('43').value,
@@ -238,6 +247,7 @@ function generate() {
             nome = nomeArquivo.replace(/\s+/g, '-').toLowerCase();
             formulario[0].classList.add('hide');
             botaoBaixador[0].classList.remove('hide');
+            botaoGerador[0].classList.add('hide');
             mensagemSucesso[0].classList.remove('hide');
             elementoHeader[0].classList.add('party');
         }
