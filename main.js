@@ -177,8 +177,8 @@ function generate() {
             const first1 = data1.split("-");
             const first2 = data2.split("-");
 
-            const data3 = first1[1] + "/" + first1[2] + "/" + first1[0];
-            const data4 = first2[1] + "/" + first2[2] + "/" + first2[0];
+            const data3 = first1[2] + "/" + first1[1] + "/" + first1[0];
+            const data4 = first2[2] + "/" + first2[1] + "/" + first2[0];
 
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...) 
             doc.render({
