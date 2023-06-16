@@ -1,0 +1,361 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 90%;
+    margin: 0 auto;
+
+    @media (max-width: 1024px) {
+        max-width: 80%;
+    }
+
+    @media (max-width: 640px) {
+        max-width: 70%;
+    }
+}
+
+.header {
+    padding-top: 50px;
+    h1 {
+        text-align: center;
+    }
+}
+
+label {
+    font-size: 14px;
+}
+
+.form {
+    margin-top: 60px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+    align-items: center;
+
+    .grupo {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 50px;
+        column-gap: 50px;
+        justify-content: center;
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: end;
+
+            li {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                input {
+                    height: 30px;
+                    font-size: 15px;
+                    border-radius: 4px;
+                    border-color: #000;
+                    width: 250px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+
+    h2 {
+        margin-top: 25px;
+        margin-bottom: 45px;
+    }
+
+    .wrapper {
+        border: 2px #ababab solid;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 10px;
+        background-color: #f2f2f2;
+        display: block;
+    }
+
+    .dados-basicos-grupo-lista {
+        margin-right: 30px;
+    }
+}
+
+.dados-protocolados-grupo-lista {
+    margin-bottom: 50px;
+}
+
+.estado-civil-endereco {
+    margin-right: 20px;
+}
+
+.estado-civil-situacao {
+    width: 400px;
+    padding-right: 0;
+    padding-left: 0;
+    align-items: center;
+}
+
+.estado-civil-casado-tipos {
+    width: 800px;
+}
+
+.estado-civil-grupo {
+    display: block;
+}
+
+.dados-protocolados-grupo {
+    padding-right: 0;
+}
+
+#div-importante {
+    padding-left: 30px;
+    padding-right: 55px;
+}
+
+#dados-lote-h2 {
+    padding-left: 15px;
+}
+
+.tipo-contrato-lista {
+    width: 520px;
+    padding-right: 80px;
+}
+
+.tipo-contrato-particular {
+    padding-right: 15px;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.tipo-contrato-demais-dados {
+    padding-top: 20px;
+    padding-right: 22px;
+}
+
+.tipo-contrato-escritura-publica {
+    padding-left: 23px;
+}
+
+.tipo-contrato-partilha {
+    padding-top: 60px;
+}
+
+.tipo-contrato-div {
+    padding-left: 10px;
+}
+
+#div-estado-civil {
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.estado-civil-casado {
+    width: 400px;
+}
+
+#div-situacao-servidao {
+    padding-right: 75px;
+    padding-top: 10px;
+}
+
+#div-contrato-partilha {
+    padding-right: 28px;
+}
+
+.div-dados-lote {
+    padding-top: 15px;
+}
+
+#dados-pessoais-label {
+    padding-left: 20px;
+}
+
+h3 {
+    font-size: 12px;
+    text-align: center;
+    padding-right: 90px;
+    margin-bottom: 5px;
+    color: #4f4f4f;
+    font-weight: bold;
+    text-decoration-line: underline;
+}
+
+.h3-conjuge {
+    padding-right: 75px;
+}
+
+.h3-residencia {
+    padding-right: 70px;
+}
+
+.h3-protocolo {
+    padding-right: 130px;
+}
+
+.h3-lote {
+    padding-left: 140px;
+    padding-bottom: 20px;
+}
+
+.h3-faixa {
+    padding-right: 140px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.input-civil {
+    width: 20px;
+}
+
+select {
+    text-align: center;
+    height: 25px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+#estado-civil-id {
+    display: block;
+}
+
+.div-do-estado-civil {
+    display: flex;
+    justify-content: center;;
+}
+
+#id-situacao-civil {
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+#id-situacao-casado {
+    align-items: center;
+    width: 980px;
+    padding-bottom: 30px;
+    padding-right: 20px;
+    gap: 8px;
+}
+
+.estado-civil-casado-conjuge {
+    width: 400px;
+}
+
+.grupo-casado {
+    display: flex;
+    flex-direction: row;
+}
+
+.tipo-comunhao {
+    padding-right: 17px;
+}
+
+#title-dados-civis {
+    padding-right: 10px;
+}
+
+.botao-gerar {
+    background-color: rgb(0, 183, 0);
+    line-height: 35px;
+    font-size: 25px;
+    width: 250px;
+    margin-left: 50px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: green;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.botao-download {
+    background-color: rgb(0, 116, 183);
+    line-height: 40px;
+    font-size: 25px;
+    width: 25%;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    text-align: center;
+    margin-top: 40px;
+
+    &:hover {
+        background-color: rgb(0, 43, 128);
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.wrapper:nth-last-child(1) {
+    padding-bottom: 20px;
+}
+
+#lista-lei {
+    padding-left: 15px;
+}
+
+.success-message {
+    font-size: 20px;
+    color: green;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.div-da-vitoria {
+    text-align: center;
+}
+
+.party {
+    background-image: url(./birthday-party.png);
+    background-size:contain;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.error {
+    color: red;
+    text-decoration: none;
+    padding-right: 15px;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -8px;
+
+    &--extra {
+        width: 300px;
+        padding-left: 35px;
+    }
+}
+
+.loucura {
+    width: 250px;
+}
+
+.error-two {
+    color: red;
+    text-align: center;
+    display: none;
+
+    &--active {
+        display: block;
+        font-size: 22px;
+        text-decoration: none;
+        text-align: center;
+        padding-right: 0;
+        padding-left: 60px;
+    }
+}
