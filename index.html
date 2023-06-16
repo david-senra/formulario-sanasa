@@ -36,8 +36,8 @@
                 <div class="estado-civil-div wrapper">
                     <h2 id="title-dados-civis">Dados Civis</h2>
                     <ul id="estado-civil-id" class="estado-civil-grupo grupo">
-                        <div class="div-do-estado-civil">
-                            <ul id="id-situacao-civil" class="estado-civil-situacao lista">
+                        <div class="div-do-estado-civil div-lista">
+                            <ul id="id-situacao-civil" class="lista-unica">
                                 <li>
                                     <label>Estado Civil: </label>
                                     <select id='6' class="select-estado-civil inputs" style="width: 250px;" type="text" value="--">
@@ -47,29 +47,22 @@
                                         <option id="select-casado" value="casado(a)">Casado(a)</option>
                                     </select>
                                 </li>
+                                <li id="regime-bens" class="hide"><label>Regime de Bens: </label>
+                                    <select id='7' class="select-regime-bens inputs" style="width: 250px;" type="text" value="--">
+                                        <option value="" selected disabled hidden>Selecione:</option>
+                                        <option value="separação de bens">Separação de Bens</option>
+                                        <option value="comunhão">Comunhão de Bens</option>
+                                        <option value="participação final nos aquestos">Participação Final nos Aquestos</option>
+                                    </select>
+                                </li>
+                                <li id="select-comunhao" class="tipo-comunhao hide"><label>Tipo de Comunhão: </label>
+                                    <select id='8' class='inputs' style="width: 250px;" type="text" value="--">
+                                        <option value="" selected disabled hidden>Selecione:</option>
+                                        <option value="universal de bens">Comunhão Universal de Bens</option>
+                                        <option value="parcial de bens">Comunhão Parcial de Bens</option>
+                                    </select>
+                                </li>
                             </ul>
-                        </div>
-                        <div class="estado-civil-casado-uhu"> 
-                            <ul id="ul-regime-comunhao" class="estado-civil-casado-div break">
-                                <ul id="id-situacao-casado" class="estado-civil-casado-tipos lista">
-                                    <li id="regime-bens" class="hide"><label>Regime de Bens: </label>
-                                        <select id='7' class="select-regime-bens inputs" style="width: 250px;" type="text" value="--">
-                                            <option value="" selected disabled hidden>Selecione:</option>
-                                            <option value="separação de bens">Separação de Bens</option>
-                                            <option value="comunhão">Comunhão de Bens</option>
-                                            <option value="participação final nos aquestos">Participação Final nos Aquestos</option>
-                                        </select>
-                                    </li>
-                                    <li id="select-comunhao" class="tipo-comunhao hide"><label>Tipo de Comunhão: </label>
-                                        <select id='8' class='inputs' style="width: 250px;" type="text" value="--">
-                                            <option value="" selected disabled hidden>Selecione:</option>
-                                            <option value="universal de bens">Comunhão Universal de Bens</option>
-                                            <option value="parcial de bens">Comunhão Parcial de Bens</option>
-                                        </select>
-                                    </li>
-                                </ul>
-                            </ul>
-                        </div>
                         <div id="grupo-casado" class="grupo">
                             <div id="ul-conjuge" class="estado-civil-casado hide">
                                 <ul class="estado-civil-casado-conjuge lista">
@@ -112,24 +105,18 @@
                     <ul class="dados-lote-grupo grupo">
                         <div class="div-dados-lote">
                             <ul class="dados-lote-localizacao1 lista">
+                                <li><label>Rua: </label><input id='24' class='inputs' type="text"></li>
+                                <li><label>Nº: </label><input id='25' class='inputs' type="text"></li>
                                 <li><label>Lote: </label><input id='21' class='inputs' type="text"></li>
-                                <li><label>Quadra: </label><input id='22' class='inputs' type="text"></li>
-                                <li><label>Quarteirão: </label><input id='23' class='inputs' type="text"></li>
+                                <li><label>Loteamento: </label><input id='26' class='inputs' type="text"></li>
                             </ul>
                         </div>
                         <div>
                             <ul class="dados-lote-localizacao2 lista">
-                                <li><label>Rua: </label><input id='24' class='inputs' type="text"></li>
-                                <li><label>Nº: </label><input id='25' class='inputs' type="text"></li>
-                                <li><label>Loteamento: </label><input id='26' class='inputs' type="text"></li>
+                                <li><label>Quadra: </label><input id='22' class='inputs' type="text"></li>
+                                <li><label>Quarteirão: </label><input id='23' class='inputs' type="text"></li>
                                 <li><label>Nº Código do Consumidor: </label><input id='27' class='inputs' type="text"></li>
-                            </ul>
-                        </div>
-                        <div id="div-situacao-servidao">
-                            <ul class="situacao-servidao-lote lista">
-                                <h3 class="title-subgroup h3-faixa">Dados da Faixa/Servidão</h3>
-                                <li><label>Localização da Faixa de Viela/Servidão Sanitária: </label><input id='28' class='inputs' type="text"></li>
-                                <li><label>Rede Sanasa Executada de Projeto Nº: </label><input id='29' class='inputs' type="text"></li>
+                                <li><label>Localização da Faixa/Servidão Sanitária: </label><input id='28' class='inputs' type="text"></li>
                             </ul>
                         </div>
                     </ul>
@@ -138,66 +125,64 @@
             <section class="section" id="tipo-contrato">
                 <div class="tipo-contrato-div wrapper">
                     <h2>Dados do Contrato</h2>
-                    <ul class="tipo-contrato-grupo grupo">
-                        <div>
-                            <ul class="tipo-contrato-lista lista">
-                                <li><label>Contrato de Imóvel: </label>
-                                    <select id='30' class="select-contrato-imovel inputs" style="width: 200px;" type="text" value="--">
-                                        <option value="" selected disabled hidden>Selecione:</option>
-                                        <option value="Escritura Pública">Escritura Pública</option>
-                                        <option value="Forma de Partilha">Forma de Partilha</option>
-                                        <option value="Contrato Particular">Contrato Particular</option>
-                                    </select>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="div-contrato-escritura hide">
-                            <ul class="tipo-contrato-escritura-publica lista">
-                                <li><label>Escritura Pública de: </label>
-                                    <select id='31' class="select-escritura-publica inputs" style="width: 250px;" type="text" value="--">
-                                        <option value="" selected disabled hidden>Selecione:</option>
-                                        <option value="Venda e Compra">Venda e Compra</option>
-                                        <option value="Doação">Doação</option>
-                                        <option value="Partilha">Partilha</option>
-                                        <option value="Cessão de Direitos e Outras Avenças">Cessão de Direitos e Outras Avenças</option>
-                                    </select>
-                                </li>
-                                <li><label>Nº do Cartório de Notas: </label><input id='32' class='inputs' type="text"></li>
-                                <li><label>Município do Cartório: </label><input id='33' class='inputs' type="text"></li>
-                                <li><label>Folha do Contrato: </label><input id='34' class='inputs' type="text"></li>
-                                <li><label>Livro do Contrato: </label><input id='35' class='inputs' type="text"></li>
-                            </ul>
-                        </div>
-                        <div id="div-contrato-partilha" class="div-contrato-partilha hide">
-                            <ul class="tipo-contrato-partilha lista">
-                                <li><label>Nº da Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
-                                <li><label>Comarca: </label><input id='37' class='inputs' type="text"></li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <ul class="tipo-contrato-demais-dados lista">
-                                <div class="div-contrato-particular hide">
-                                    <ul class="tipo-contrato-particular lista">
-                                        <li><label>Tipo de Contrato Particular: </label>
-                                            <select id='38' class="select-contrato-particular inputs" style="width: 250px;" type="text" value="--">
-                                                <option value="" selected disabled hidden>Selecione:</option>
-                                                <option value="Promessa de Compra e Venda">Promessa de Compra e Venda</option>
-                                                <option value="Regulado por Lei">Regulado Por Lei</option>
-                                                <option value="de Permuta">De Permuta</option>
-                                            </select>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <li class="lista-lei hide"><label>Nº da Lei: </label><input id='39' class='inputs' type="text"></li>
-                                <li><label>Data do Contrato: </label><input id='40' class='inputs' type="text"></li>
-                                <li><label>Número do Cartório: </label><input id='41' class='inputs' type="text"></li>
-                                <li><label>Município: </label><input id='42' class='inputs' type="text"></li>
-                                <li><label>Transcrição/Matrícula: </label><input id='43' class='inputs' type="text"></li>
-                            </ul>
-                            
-                        </div>
-                    </ul>
+                    <div class="div-lista">
+                        <ul class="tipo-contrato-lista lista">
+                            <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel: </label>
+                                <select id='30' class="select-contrato-imovel inputs" style="width: 250px;" type="text" value="--">
+                                    <option value="" selected disabled hidden>Selecione:</option>
+                                    <option value="Escritura Pública">Escritura Pública</option>
+                                    <option value="Forma de Partilha">Forma de Partilha</option>
+                                    <option value="Contrato Particular">Contrato Particular</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="tipo-contrato-grupo grupo">
+                            <div class="div-contrato-escritura hide">
+                                <ul class="tipo-contrato-escritura-publica lista">
+                                    <li><label>Escritura Pública de: </label>
+                                        <select id='31' class="select-escritura-publica inputs" style="width: 250px;" type="text" value="--">
+                                            <option value="" selected disabled hidden>Selecione:</option>
+                                            <option value="Venda e Compra">Venda e Compra</option>
+                                            <option value="Doação">Doação</option>
+                                            <option value="Partilha">Partilha</option>
+                                            <option value="Cessão de Direitos e Outras Avenças">Cessão de Direitos e Outras Avenças</option>
+                                        </select>
+                                    </li>
+                                    <li><label>Nº do Cartório de Notas: </label><input id='32' class='inputs' type="text"></li>
+                                    <li><label>Município do Cartório: </label><input id='33' class='inputs' type="text"></li>
+                                    <li><label>Folha do Contrato: </label><input id='34' class='inputs' type="text"></li>
+                                    <li><label>Livro do Contrato: </label><input id='35' class='inputs' type="text"></li>
+                                </ul>
+                            </div>
+                            <div id="div-contrato-partilha" class="div-contrato-partilha hide">
+                                <ul class="tipo-contrato-partilha lista">
+                                    <li><label>Nº da Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
+                                    <li><label>Comarca: </label><input id='37' class='inputs' type="text"></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="tipo-contrato-demais-dados lista">
+                                    <div class="div-contrato-particular hide">
+                                        <ul class="tipo-contrato-particular lista">
+                                            <li><label>Tipo de Contrato Particular: </label>
+                                                <select id='38' class="select-contrato-particular inputs" style="width: 250px;" type="text" value="--">
+                                                    <option value="" selected disabled hidden>Selecione:</option>
+                                                    <option value="Promessa de Compra e Venda">Promessa de Compra e Venda</option>
+                                                    <option value="Regulado por Lei">Regulado Por Lei</option>
+                                                    <option value="de Permuta">De Permuta</option>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <li class="lista-lei hide"><label>Nº da Lei: </label><input id='39' class='inputs' type="text"></li>
+                                    <li><label>Data do Contrato: </label><input id='40' class='inputs' type="text"></li>
+                                    <li><label>Número do Cartório: </label><input id='41' class='inputs' type="text"></li>
+                                    <li><label>Município: </label><input id='42' class='inputs' type="text"></li>
+                                    <li><label>Transcrição/Matrícula: </label><input id='43' class='inputs' type="text"></li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <button class="botao-gerar" type="button">Gerar Contrato</button>

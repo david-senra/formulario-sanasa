@@ -80,106 +80,36 @@ label {
     .wrapper {
         border: 2px #ababab solid;
         padding-bottom: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
         border-radius: 10px;
         background-color: #f2f2f2;
         display: block;
     }
-
-    .dados-basicos-grupo-lista {
-        margin-right: 30px;
-    }
 }
 
-.dados-protocolados-grupo-lista {
-    margin-bottom: 50px;
-}
-
-.estado-civil-endereco {
-    margin-right: 20px;
-}
-
-.estado-civil-situacao {
-    width: 400px;
-    padding-right: 0;
-    padding-left: 0;
+.div-lista {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 50px;
 }
 
-.estado-civil-casado-tipos {
-    width: 800px;
+.lista-unica {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    gap: 10px;
 }
 
-.estado-civil-grupo {
-    display: block;
+.li-contrato {
+    width: 401px;
+    text-align: end;
 }
 
-.dados-protocolados-grupo {
-    padding-right: 0;
-}
-
-#div-importante {
-    padding-left: 30px;
-    padding-right: 55px;
-}
-
-#dados-lote-h2 {
-    padding-left: 15px;
-}
-
-.tipo-contrato-lista {
-    width: 520px;
-    padding-right: 80px;
-}
-
-.tipo-contrato-particular {
-    padding-right: 15px;
-    margin-right: 0;
-    margin-bottom: 10px;
-}
-
-.tipo-contrato-demais-dados {
-    padding-top: 20px;
-    padding-right: 22px;
-}
-
-.tipo-contrato-escritura-publica {
-    padding-left: 23px;
-}
-
-.tipo-contrato-partilha {
-    padding-top: 60px;
-}
-
-.tipo-contrato-div {
-    padding-left: 10px;
-}
-
-#div-estado-civil {
-    padding-top: 15px;
-    padding-left: 30px;
-}
-
-.estado-civil-casado {
-    width: 400px;
-}
-
-#div-situacao-servidao {
-    padding-right: 75px;
-    padding-top: 10px;
-}
-
-#div-contrato-partilha {
-    padding-right: 28px;
-}
-
-.div-dados-lote {
-    padding-top: 15px;
-}
-
-#dados-pessoais-label {
-    padding-left: 20px;
+.label-contrato {
+    padding-right: 5px;
 }
 
 h3 {
@@ -206,6 +136,7 @@ h3 {
 
 .h3-lote {
     padding-left: 140px;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -217,55 +148,12 @@ h3 {
     display: none !important;
 }
 
-.input-civil {
-    width: 20px;
-}
-
 select {
     text-align: center;
     height: 25px;
     font-size: 14px;
     background-color: #ffffff;
     border-radius: 5px;
-}
-
-#estado-civil-id {
-    display: block;
-}
-
-.div-do-estado-civil {
-    display: flex;
-    justify-content: center;;
-}
-
-#id-situacao-civil {
-    align-items: center;
-    padding-bottom: 30px;
-}
-
-#id-situacao-casado {
-    align-items: center;
-    width: 980px;
-    padding-bottom: 30px;
-    padding-right: 20px;
-    gap: 8px;
-}
-
-.estado-civil-casado-conjuge {
-    width: 400px;
-}
-
-.grupo-casado {
-    display: flex;
-    flex-direction: row;
-}
-
-.tipo-comunhao {
-    padding-right: 17px;
-}
-
-#title-dados-civis {
-    padding-right: 10px;
 }
 
 .botao-gerar {
@@ -301,11 +189,7 @@ select {
 }
 
 .wrapper:nth-last-child(1) {
-    padding-bottom: 20px;
-}
-
-#lista-lei {
-    padding-left: 15px;
+    padding-bottom: 40px;
 }
 
 .success-message {
