@@ -160,7 +160,7 @@ function generate() {
         return;
     }
     loadFile(
-        "template.docx",
+        "https://servidor-estaticos-flame-eight.vercel.app/template.docx",
         function (error, content) {
             if (error) {
                 throw error;
