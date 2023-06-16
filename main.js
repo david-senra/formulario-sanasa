@@ -188,6 +188,8 @@ function generate() {
                 'partilha' : temPartilha,
                 'particular' : temContratoParticular,
                 'regulado': temContratoParticularEmLei,
+                'transcricao': getElementById('transcricao-matricula').value == 'transcricao',
+                'matricula': getElementById('transcricao-matricula').value == 'matricula',
                 '1': document.getElementById('1').value,
                 '2': document.getElementById('2').value,
                 '3': document.getElementById('3').value,

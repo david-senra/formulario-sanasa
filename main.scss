@@ -105,12 +105,12 @@ label {
 }
 
 .li-contrato {
-    padding-left: 32px;
+    padding-left: 0;
     text-align: end;
 }
 
 .label-contrato {
-    padding-right: 5px;
+    padding-right: 0;
 }
 
 #lista-contrato-partilha {
@@ -248,4 +248,8 @@ select {
         padding-right: 0;
         padding-left: 60px;
     }
+}
+
+#transcricao-matricula {
+    text-align: right;
 }

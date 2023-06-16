@@ -25,7 +25,7 @@
                                 <li><label>Nome Completo: </label><input id='1' class="inputs obrig" type="text"></li>
                                 <li><label>Nacionalidade: </label><input id='2' class="inputs obrig" type="text"></li>
                                 <li><label>Profissão: </label><input id='3' class="inputs obrig" type="text"></li>
-                                <li><label>RG: </label><input id='4' class="inputs obrig" type="text"></li>
+                                <li><label>RG/RNE: </label><input id='4' class="inputs obrig" type="text"></li>
                                 <li><label>CPF: </label><input id='5' class="inputs obrig" type="text"></li>
                             </ul>
                         </div>
@@ -67,7 +67,7 @@
                             <div id="ul-conjuge" class="estado-civil-casado hide">
                                 <ul class="estado-civil-casado-conjuge lista">
                                     <h3 class="title-subgroup h3-conjuge">Dados do Cônjuge:</h3>
-                                    <li><label>Nome: </label><input id='9' class='inputs' type="text"></li>
+                                    <li><label>Nome Completo: </label><input id='9' class='inputs' type="text"></li>
                                     <li><label>Nacionalidade: </label><input id='10' class='inputs' type="text"></li>
                                     <li><label>Profissão: </label><input id='11' class='inputs' type="text"></li>
                                     <li><label>RG: </label><input id='12' class='inputs' type="text"></li>
@@ -136,7 +136,7 @@
                         <ul class="tipo-contrato-grupo grupo">
                             <div>
                                 <ul class="tipo-contrato-lista lista">
-                                    <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel: </label>
+                                    <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel:</label>
                                         <select id='30' class="select-contrato-imovel inputs" style="width: 250px;" type="text" value="--">
                                             <option value="" selected disabled hidden>Selecione:</option>
                                             <option value="Escritura Pública">Escritura Pública</option>
@@ -182,14 +182,20 @@
                                     <li class="lista-lei hide"><label>Nº da Lei: </label><input id='39' class='inputs' type="text"></li>
                                     <div id="div-contrato-partilha" class="div-contrato-partilha hide">
                                         <ul id="lista-contrato-partilha" class="tipo-contrato-partilha lista">
-                                            <li><label>Nº da Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
+                                            <li><label>Vara de Sucessões: </label><input id='36' class='inputs' type="text"></li>
                                             <li><label>Comarca: </label><input id='37' class='inputs' type="text"></li>
                                         </ul>
                                     </div>
                                     <li><label>Data do Contrato: </label><input id='40' class='inputs' type="date" name="date" pattern=""></li>
                                     <li><label>Número do Cartório: </label><input id='41' class='inputs' type="text"></li>
                                     <li><label>Município: </label><input id='42' class='inputs' type="text"></li>
-                                    <li id="what"><label>Transcrição/Matrícula: </label><input id='43' class='inputs' type="text"></li>
+                                    <li id="what">
+                                        <select id='transcricao-matricula' class="select-transcricao-matricula inputs" style="width: 100px;" type="text" value="Matrícula: ">
+                                            <option value="matricula" selected>Matrícula: </option>
+                                            <option value="transcricao">Transcrição: </option>
+                                        </select>
+                                        <input id='43' class='inputs' type="text">
+                                    </li>
                                 </ul>
                             </div>
                         </ul>
