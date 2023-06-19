@@ -381,7 +381,7 @@ async function generate() {
             botaoGerador[0].classList.add('hide');
             mensagemSucesso[0].classList.remove('hide');
             elementoHeader[0].classList.add('party');
-            htmlBody.className.remove('loading');
+            htmlBody.classList.remove('loading');
             mensagemCarregando.classList.add('hide');
         }
     );
