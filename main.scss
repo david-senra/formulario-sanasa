@@ -12,7 +12,7 @@
     width: 90%;
     margin: 0 auto;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
         max-width: 80%;
     }
 
@@ -26,10 +26,34 @@
     h1 {
         text-align: center;
     }
+
+    @media (max-width: 640px) {
+        font-size: 14px;
+        text-align: center;
+
+        h1 {
+            max-width: 340px;
+            padding: auto;
+            margin: auto;
+        }
+    }
 }
 
 label {
     font-size: 14px;
+    padding-right: 5px;
+    @media (max-width: 1100px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+}
+
+#label-estado-civil {
+    padding-right: 8px;
 }
 
 .form {
@@ -68,14 +92,33 @@ label {
                     width: 250px;
                     padding-left: 5px;
                     padding-right: 5px;
+
+                    @media (max-width: 1100px) {
+                        height: 25px;
+                        font-size: 12px;
+                        width: 200px;
+                    }
+
+                    @media (max-width: 640px) {
+                        font-size: 11px;
+                        height: 20px;
+                        width: 150px;
+                    }
                 }
             }
         }
+
+
+
     }
 
     h2 {
         margin-top: 25px;
         margin-bottom: 45px;
+
+        @media (max-width: 1100px) {
+            font-size: 22px;
+        }
     }
 
     .wrapper {
@@ -86,6 +129,11 @@ label {
         border-radius: 10px;
         background-color: #f2f2f2;
         display: block;
+
+        @media (max-width: 640px) {
+            padding-right: 20px;
+            padding-left: 15px;
+        }
     }
 }
 
@@ -121,6 +169,96 @@ label {
     padding-left: 16px;
 }
 
+.dados-protocolados-grupo {
+    width: 395px;
+
+    @media (max-width: 1100px) {
+        width: 332px;
+    }
+    
+    @media (max-width: 640px) {
+        width: 280px;
+    }
+}
+
+#div-importante {
+    padding-left: 25px;
+    
+    @media (max-width: 640px) {
+        width: 300px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.estado-civil-div {
+    @media (max-width: 1100px) {
+        width: 398px;
+
+        .div-do-estado-civil {
+            justify-content: end;
+        }
+
+        #regime-bens {
+            padding-left: 15px;
+        }
+        
+        .estado-civil-grupo {
+            flex-direction: column;
+            align-items: end;
+        }
+
+        #grupo-casado {
+            justify-content: end;
+        }
+    }
+
+    @media (max-width: 640px) {
+        
+        width: 300px;
+
+        .div-do-estado-civil {
+            width: 250px;
+            padding-right: 5px;
+            padding-left: 10px;
+            align-items: end;
+
+            #id-situacao-civil {
+                width: 250px;
+            }
+        }
+
+        #grupo-casado {
+            justify-content: end;
+            width: 250px;
+        }
+
+        #regime-bens {
+            padding-left: 0;
+        }
+    }
+}
+
+#tipo-contrato-div {
+    @media (max-width: 1100px) {
+        width: 410px;
+        padding-left: 20px;
+
+        .div-lista {
+            align-items: end;
+        }
+
+        .tipo-contrato-grupo {
+            justify-content: end;
+        }
+    }
+
+    
+    @media (max-width: 640px) {
+        width: 310px;
+    }
+}
+
 h3 {
     font-size: 12px;
     text-align: center;
@@ -133,24 +271,66 @@ h3 {
 
 .h3-conjuge {
     padding-right: 75px;
+
+    @media (max-width: 1100px) {
+        padding-right: 115px;
+    }
+    
+    @media (max-width: 640px) {
+        padding-right: 70px;
+    }
 }
 
 .h3-residencia {
-    padding-right: 70px;
+    padding-right: 110px;
+
+    @media (max-width: 1100px) {
+        padding-right: 105px;
+    }
+    
+    @media (max-width: 640px) {
+        padding-right: 60px;
+    }
 }
 
 .h3-protocolo {
     padding-right: 130px;
+    
+    @media (max-width: 1100px) {
+        padding-right: 100px;
+    }
+    
+    @media (max-width: 640px) {
+        padding-right: 70px;
+    }
 }
 
 .h3-lote {
-    padding-left: 140px;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    padding-right: 110px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+        
+    @media (max-width: 1100px) {
+        padding-right: 80px;
+    }
+    
+    @media (max-width: 640px) {
+        padding-right: 50px;
+    }
 }
 
 .h3-faixa {
-    padding-right: 140px;
+    padding-right: 90px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+        
+    @media (max-width: 1100px) {
+        padding-right: 60px;
+    }
+    
+    @media (max-width: 640px) {
+        padding-right: 30px;
+    }
 }
 
 .hide {
@@ -165,6 +345,20 @@ select {
     border-radius: 5px;
 }
 
+.select {
+    width: 250px;
+    @media (max-width: 1100px) {
+        width: 200px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+        width: 150px;
+        height: 20px;
+        font-size: 11px;
+    }
+}
+
 .botao-gerar {
     background-color: rgb(0, 183, 0);
     line-height: 35px;
@@ -173,6 +367,14 @@ select {
     margin-left: 50px;
     border-radius: 5px;
     margin-top: 20px;
+    
+    @media (max-width: 640px) {
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        width: 200px;
+        line-height: 30px;
+    }
 
     &:hover {
         background-color: green;
@@ -190,6 +392,14 @@ select {
     border-radius: 5px;
     margin-bottom: 50px;
     margin-top: 20px;
+
+    @media (max-width: 640px) {
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        width: 200px;
+        line-height: 30px;
+    }
 
     &:hover {
         background-color: rgb(0, 43, 128);
@@ -213,6 +423,10 @@ select {
 .div-do-envio {
     text-align: center;
     margin-bottom: 50px;
+
+    @media (max-width: 640px) {
+        width: auto;
+    }
 }
 
 .party {
@@ -229,6 +443,17 @@ select {
     font-size: 12px;
     text-align: center;
     margin-top: -8px;
+
+    @media (max-width: 1100px) {
+        padding-right: 0;
+        padding-left: 50px;
+    }
+
+    @media (max-width: 640px) {
+        font-size: 10px;
+        padding-right: 0px;
+        padding-left: 100px;
+    }
 }
 
 .loucura {
@@ -248,8 +473,55 @@ select {
         padding-right: 0;
         padding-left: 60px;
     }
+
+    @media (max-width: 1100px) {
+        padding-right: 0;
+        padding-left: 20px;
+        font-size: 18px;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+        font-size: 16px;
+        text-align: center;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        white-space: normal;
+    }
 }
 
 #transcricao-matricula {
     text-align: right;
+    width: 100px;
+    @media (max-width: 1100px) {
+        font-size: 12px;
+        width: 80px;
+    }
+    
+    @media (max-width: 640px) {
+        font-size: 11px;
+        width: 82px;
+        height: 20px;
+    }
+}
+
+.li-contrato {
+    @media (min-width: 1100px) {
+        width: 395px;
+        padding-left: 30px;
+    }
+}
+
+#id-situacao-civil {
+    @media (max-width: 640px) {
+        width: auto;
+    }
+}
+
+#select-comunhao {
+    @media (max-width: 640px) {
+        width: 260px;
+        padding-left: 6px;
+    }
 }

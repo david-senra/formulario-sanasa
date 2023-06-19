@@ -180,6 +180,12 @@ function generate() {
             const data3 = first1[2] + "/" + first1[1] + "/" + first1[0];
             const data4 = first2[2] + "/" + first2[1] + "/" + first2[0];
 
+            const respostaFaixa = document.getElementById('transcricao-matricula').value;
+
+            const vielaPresente = respostaFaixa == 'ambas' || respostaFaixa == 'viela';
+            const servidaoPresente = respostaFaixa == 'ambas' || respostaFaixa == 'servidao';
+            const ambasPresentes = respostaFaixa == 'ambas';
+
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...) 
             doc.render({
                 'casado': estaCasado,
@@ -190,6 +196,10 @@ function generate() {
                 'regulado': temContratoParticularEmLei,
                 'transcricao': document.getElementById('transcricao-matricula').value == 'transcricao',
                 'matricula': document.getElementById('transcricao-matricula').value == 'matricula',
+                'unica': document.getElementById('tipo-faixa').value == !ambasPresentes,
+                'ambas': document.getElementById('tipo-faixa').value == ambasPresentes,
+                'servidao': document.getElementById('tipo-faixa').value == servidaoPresente,
+                'viela': document.getElementById('tipo-faixa').value == vielaPresente,
                 '1': document.getElementById('1').value,
                 '2': document.getElementById('2').value,
                 '3': document.getElementById('3').value,

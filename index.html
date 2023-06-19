@@ -22,11 +22,11 @@
                     <ul class="dados-basicos-grupo grupo">
                         <div>
                             <ul class="dados-basicos-grupo-lista lista">
-                                <li><label>Nome Completo: </label><input id='1' class="inputs obrig" type="text"></li>
-                                <li><label>Nacionalidade: </label><input id='2' class="inputs obrig" type="text"></li>
-                                <li><label>Profissão: </label><input id='3' class="inputs obrig" type="text"></li>
-                                <li><label>RG/RNE: </label><input id='4' class="inputs obrig" type="text"></li>
-                                <li><label>CPF: </label><input id='5' class="inputs obrig" type="text"></li>
+                                <li><label>Nome Completo:</label><input id='1' class="inputs obrig" type="text"></li>
+                                <li><label>Nacionalidade:</label><input id='2' class="inputs obrig" type="text"></li>
+                                <li><label>Profissão:</label><input id='3' class="inputs obrig" type="text"></li>
+                                <li><label>RG/RNE:</label><input id='4' class="inputs obrig" type="text"></li>
+                                <li><label>CPF:</label><input id='5' class="inputs obrig" type="text"></li>
                             </ul>
                         </div>
                     </ul>
@@ -39,8 +39,8 @@
                         <div class="div-do-estado-civil div-lista">
                             <ul id="id-situacao-civil" class="lista-unica">
                                 <li>
-                                    <label>Estado Civil: </label>
-                                    <select id='6' class="select-estado-civil inputs" style="width: 250px;" type="text" value="--">
+                                    <label id="label-estado-civil">Estado Civil:</label>
+                                    <select id='6' class="select-estado-civil inputs select" type="text" value="--">
                                         <option value="" selected disabled hidden>Selecione:</option>
                                         <option value="solteiro(a)">Solteiro(a)</option>
                                         <option value="viúvo(a)">Viúvo(a)</option>
@@ -48,7 +48,7 @@
                                     </select>
                                 </li>
                                 <li id="regime-bens" class="hide"><label>Regime de Bens: </label>
-                                    <select id='7' class="select-regime-bens inputs" style="width: 250px;" type="text" value="--">
+                                    <select id='7' class="select-regime-bens inputs select" type="text" value="--">
                                         <option value="" selected disabled hidden>Selecione:</option>
                                         <option value="separação de bens">Separação de Bens</option>
                                         <option value="comunhão">Comunhão de Bens</option>
@@ -56,7 +56,7 @@
                                     </select>
                                 </li>
                                 <li id="select-comunhao" class="tipo-comunhao hide"><label>Tipo de Comunhão: </label>
-                                    <select id='8' class='inputs' style="width: 250px;" type="text" value="--">
+                                    <select id='8' class='inputs select' type="text" value="--">
                                         <option value="" selected disabled hidden>Selecione:</option>
                                         <option value="universal de bens">Comunhão Universal de Bens</option>
                                         <option value="parcial de bens">Comunhão Parcial de Bens</option>
@@ -66,21 +66,21 @@
                         <div id="grupo-casado" class="grupo">
                             <div id="ul-conjuge" class="estado-civil-casado hide">
                                 <ul class="estado-civil-casado-conjuge lista">
-                                    <h3 class="title-subgroup h3-conjuge">Dados do Cônjuge:</h3>
-                                    <li><label>Nome Completo: </label><input id='9' class='inputs' type="text"></li>
-                                    <li><label>Nacionalidade: </label><input id='10' class='inputs' type="text"></li>
-                                    <li><label>Profissão: </label><input id='11' class='inputs' type="text"></li>
-                                    <li><label>RG: </label><input id='12' class='inputs' type="text"></li>
-                                    <li><label>CPF: </label><input id='13' class='inputs' type="text"></li>
+                                    <h3 class="title-subgroup h3-conjuge">Dados do Cônjuge</h3>
+                                    <li><label>Nome Completo:</label><input id='9' class='inputs' type="text"></li>
+                                    <li><label>Nacionalidade:</label><input id='10' class='inputs' type="text"></li>
+                                    <li><label>Profissão:</label><input id='11' class='inputs' type="text"></li>
+                                    <li><label>RG:</label><input id='12' class='inputs' type="text"></li>
+                                    <li><label>CPF:</label><input id='13' class='inputs' type="text"></li>
                                 </ul>
                             </div>
                             <div id="div-estado-civil">
                                 <ul class="estado-civil-endereco lista">
                                     <h3 class="title-subgroup h3-residencia">Dados de Residência</h3>
-                                    <li><label>Logradouro: </label><input id='14' class='inputs' type="text"></li>
-                                    <li><label>Número: </label><input id='15' class='inputs' type="text"></li>
-                                    <li><label>Bairro: </label><input id='16' class='inputs' type="text"></li>
-                                    <li><label>Cidade: </label><input id='17' class='inputs' type="text"></li>
+                                    <li><label>Logradouro:</label><input id='14' class='inputs' type="text"></li>
+                                    <li><label>Número:</label><input id='15' class='inputs' type="text"></li>
+                                    <li><label>Bairro:</label><input id='16' class='inputs' type="text"></li>
+                                    <li><label>Cidade:</label><input id='17' class='inputs' type="text"></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,29 +95,32 @@
                         <div>
                             <ul class="dados-protocolados-grupo-lista lista">
                                 <h3 class="title-subgroup h3-protocolo">Dados de Protocolo</h3>
-                                <li><label>Nº de Protocolo Sanasa: </label><input id='18' class='inputs' type="text"></li>
+                                <li><label>Nº Prot. Sanasa: </label><input id='18' class='inputs' type="text"></li>
                                 <li><label>Data do Protocolo: </label><input id= '19' class='inputs' type="date" name="date" pattern=""></li>
                                 <li><label>Requerente: </label><input id='20' class='inputs' type="text"></li>
                             </ul>
-                        </div>
-                    </ul>
-                    <h3 class="title-subgroup h3-lote">Dados de Endereço do Lote</h3>
-                    <ul class="dados-lote-grupo grupo">
-                        <div class="div-dados-lote">
                             <ul class="dados-lote-localizacao1 lista">
+                                <h3 class="title-subgroup h3-lote">Dados de Endereço do Lote</h3>
                                 <li><label>Rua: </label><input id='24' class='inputs' type="text"></li>
                                 <li><label>Nº: </label><input id='25' class='inputs' type="text"></li>
                                 <li><label>Lote: </label><input id='21' class='inputs' type="text"></li>
                                 <li><label>Loteamento: </label><input id='26' class='inputs' type="text"></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul class="dados-lote-localizacao2 lista">
                                 <li><label>Quadra: </label><input id='22' class='inputs' type="text"></li>
                                 <li><label>Quarteirão: </label><input id='23' class='inputs' type="text"></li>
-                                <li><label>Nº Código do Consumidor: </label><input id='27' class='inputs' type="text"></li>
-                                <li><label>Localização da Faixa/Servidão Sanitária: </label>
-                                    <select id='28' class='inputs' style="width: 250px;" type="text" value="--">
+                                <li><label>Cód. Consumidor: </label><input id='27' class='inputs' type="text"></li>
+                            </ul>
+                            <ul class="dados-lote-localizacao2 lista">
+                                <h3 class="title-subgroup h3-faixa">Dados de Faixa Sanitária do Lote</h3>
+                                <li><label>Tipo(s) de Faixa: </label>
+                                    <select id='tipo-faixa' class='inputs select' type="text" value="--">
+                                        <option value="" selected disabled hidden>Selecione:</option>
+                                        <option value="viela">Viela Sanitária</option>
+                                        <option value="servidao">Servidão Sanitária</option>
+                                        <option value="ambas">Ambas</option>
+                                    </select>
+                                </li>
+                                <li><label>Localização: </label>
+                                    <select id='28' class='inputs select' type="text" value="--">
                                         <option value="" selected disabled hidden>Selecione:</option>
                                         <option value="na lateral da propriedade">Lateral do Lote</option>
                                         <option value="no meio da propriedade">Meio do Lote</option>
@@ -130,14 +133,14 @@
                 </div>
             </section>
             <section class="section" id="tipo-contrato">
-                <div class="tipo-contrato-div wrapper">
+                <div id="tipo-contrato-div" class="tipo-contrato-div wrapper">
                     <h2>Dados do Título Aquisitivo</h2>
-                    <div class="div-lista lista">
+                    <div id ="div-lista-aquisitivo" class="div-lista lista">
                         <ul class="tipo-contrato-grupo grupo">
                             <div>
                                 <ul class="tipo-contrato-lista lista">
-                                    <li class="li-contrato"><label class="label-contrato">Contrato de Imóvel:</label>
-                                        <select id='30' class="select-contrato-imovel inputs" style="width: 250px;" type="text" value="--">
+                                    <li class="li-contrato"><label class="label-contrato">Título de Imóvel:</label>
+                                        <select id='30' class="select-contrato-imovel inputs select" type="text" value="--">
                                             <option value="" selected disabled hidden>Selecione:</option>
                                             <option value="Escritura Pública">Escritura Pública</option>
                                             <option value="Forma de Partilha">Forma de Partilha</option>
@@ -151,7 +154,7 @@
                             <div class="div-contrato-escritura hide">
                                 <ul class="tipo-contrato-escritura-publica lista">
                                     <li><label>Escritura Pública de: </label>
-                                        <select id='31' class="select-escritura-publica inputs" style="width: 250px;" type="text" value="--">
+                                        <select id='31' class="select-escritura-publica inputs select" type="text" value="--">
                                             <option value="" selected disabled hidden>Selecione:</option>
                                             <option value="Venda e Compra">Venda e Compra</option>
                                             <option value="Doação">Doação</option>
@@ -159,7 +162,7 @@
                                             <option value="Cessão de Direitos e Outras Avenças">Cessão de Direitos e Outras Avenças</option>
                                         </select>
                                     </li>
-                                    <li><label>Nº do Cartório de Notas: </label><input id='32' class='inputs' type="text"></li>
+                                    <li><label>Nº Cartório de Notas: </label><input id='32' class='inputs' type="text"></li>
                                     <li><label>Município do Cartório: </label><input id='33' class='inputs' type="text"></li>
                                     <li><label>Folha do Contrato: </label><input id='34' class='inputs' type="text"></li>
                                     <li><label>Livro do Contrato: </label><input id='35' class='inputs' type="text"></li>
@@ -170,7 +173,7 @@
                                     <div class="div-contrato-particular hide">
                                         <ul class="tipo-contrato-particular lista">
                                             <li><label>Tipo de Contrato: </label>
-                                                <select id='38' class="select-contrato-particular inputs" style="width: 250px;" type="text" value="--">
+                                                <select id='38' class="select-contrato-particular inputs select" type="text" value="--">
                                                     <option value="" selected disabled hidden>Selecione:</option>
                                                     <option value="de Promessa de Compra e Venda">Promessa de Compra e Venda</option>
                                                     <option value="regulado pela Lei">Regulado Por Lei</option>
@@ -190,7 +193,7 @@
                                     <li><label>Número do Cartório: </label><input id='41' class='inputs' type="text"></li>
                                     <li><label>Município: </label><input id='42' class='inputs' type="text"></li>
                                     <li id="what">
-                                        <select id='transcricao-matricula' class="select-transcricao-matricula inputs" style="width: 100px;" type="text" value="Matrícula: ">
+                                        <select id='transcricao-matricula' class="select-transcricao-matricula inputs" type="text" value="Matrícula: ">
                                             <option value="matricula" selected>Matrícula: </option>
                                             <option value="transcricao">Transcrição: </option>
                                         </select>
