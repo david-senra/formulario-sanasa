@@ -155,6 +155,7 @@ function generate() {
             input.addEventListener('keydown', e => {
                 elem.remove();
                 mensagemErroDois.classList.remove('error-two--active')
+                newElement.remove();
             })
             inputsArrayComErros.push(input);
         }
