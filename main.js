@@ -8,6 +8,10 @@ var temPartilha = true;
 var temContratoParticular = true;
 var temContratoParticularEmLei = true;
 
+var vielaPresente = false;
+var servidaoPresente = false;
+var ambasPresentes = false;
+
 const mensagemSucesso = document.getElementsByClassName('success-message');
 const elementoHeader = document.getElementsByClassName('header');
 
@@ -182,9 +186,9 @@ function generate() {
 
             const respostaFaixa = document.getElementById('tipo-faixa').value;
 
-            const vielaPresente = respostaFaixa == 'ambas' || respostaFaixa == 'viela';
-            const servidaoPresente = respostaFaixa == 'ambas' || respostaFaixa == 'servidao';
-            const ambasPresentes = respostaFaixa == 'ambas';
+            vielaPresente = respostaFaixa == 'ambas' || respostaFaixa == 'viela';
+            servidaoPresente = respostaFaixa == 'ambas' || respostaFaixa == 'servidao';
+            ambasPresentes = respostaFaixa == 'ambas';
 
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...) 
             doc.render({
@@ -196,10 +200,10 @@ function generate() {
                 'regulado': temContratoParticularEmLei,
                 'transcricao': document.getElementById('transcricao-matricula').value == 'transcricao',
                 'matricula': document.getElementById('transcricao-matricula').value == 'matricula',
-                'unica': document.getElementById('tipo-faixa').value == !ambasPresentes,
-                'ambas': document.getElementById('tipo-faixa').value == ambasPresentes,
-                'servidao': document.getElementById('tipo-faixa').value == servidaoPresente,
-                'viela': document.getElementById('tipo-faixa').value == vielaPresente,
+                'unica': !ambasPresentes,
+                'ambas': ambasPresentes,
+                'servidao': servidaoPresente,
+                'viela': vielaPresente,
                 '1': document.getElementById('1').value,
                 '2': document.getElementById('2').value,
                 '3': document.getElementById('3').value,
