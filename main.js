@@ -254,13 +254,13 @@ function generate() {
             var portadorConjuge = "";
             var inscritoConjuge = "";
 
-            if (nomePrincipalGenero == male) {
+            if (nomePrincipalGenero == 'male') {
                 portadorPrincipal = 'portador';
                 inscritoPrincipal = 'inscrito';
                 domiciliadoPrincipal = 'domiciliado';
                 situacaoCivil = `${document.getElementById('6').value}o`
             }
-            else if (nomePrincipalGenero == female) {
+            else if (nomePrincipalGenero == 'female') {
                 portadorPrincipal = 'portadora';
                 inscritoPrincipal = 'inscrita';
                 domiciliadoPrincipal = 'domiciliada';
@@ -277,11 +277,11 @@ function generate() {
                 domiciliadoPrincipal = 'domiciliados';
             }
 
-            if (nomeConjugeGenero == male) {
+            if (nomeConjugeGenero == 'male') {
                 portadorConjuge = 'portador';
                 inscritoConjuge = 'inscrito';
             }
-            else if (nomeConjugeGenero == female) {
+            else if (nomeConjugeGenero == 'female') {
                 portadorConjuge = 'portadora';
                 inscritoConjuge = 'inscrita';
             }
