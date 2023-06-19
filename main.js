@@ -1,6 +1,8 @@
 var blob = [];
 var nome = "";
 
+const elementosHTMLBody = document.getElementsByClassName('body');
+const htmlBody = elementosHTMLBody[0];
 var estaCasado = true;
 var estaEmComunhao = true;
 var temEscrituraPublica = true;
@@ -125,7 +127,7 @@ function loadFile(url, callback) {
     PizZipUtils.getBinaryContent(url, callback);
 }
 
-function generate() {
+async function generate() {
 
     const todosErros = document.getElementsByTagName('P');
     const arrayErros = Array.from(todosErros);
@@ -170,10 +172,14 @@ function generate() {
     }
 
     //AQUI
+    const mensagemCarregando = document.getElementById('texto-carregando');
+    htmlBody.className.add('loading');
+    mensagemCarregando.classList.remove('hide');
+
     const arrayNomePrincipal = document.getElementById('1').value.split(" ");
     const nomePrincipal = arrayNomePrincipal[0];
     const linkNomePrincipal = `https://gender-api.com/get?name=${nomePrincipal}&key=54bnXdJgG83wgPqA64Mjz255VdZKULj3h267`
-    fetch(linkNomePrincipal)
+    await fetch(linkNomePrincipal)
         .then(function(resposta){
             if (resposta.ok) {
                 return resposta.json();
@@ -185,6 +191,9 @@ function generate() {
         })
         .then(function(json) {
             json.accuracy >= 95? nomePrincipalGenero = json.gender : nomePrincipalGenero = 'indefinido';
+            console.log(json.accuracy);
+            console.log(json.gender);
+            console.log(nomeConjugeGenero);
         })
         .catch(function(erro){
             nomePrincipalGenero = 'indefinido';
@@ -195,7 +204,7 @@ function generate() {
     const nomeConjuge = arrayNomeConjuge[0];
     const linkNomeConjuge = `https://gender-api.com/get?name=${nomeConjuge}&key=54bnXdJgG83wgPqA64Mjz255VdZKULj3h267`
     if (estaCasado == true) {
-        fetch(linkNomeConjuge)
+        await fetch(linkNomeConjuge)
         .then(function(resposta){
             if (resposta.ok) {
                 return resposta.json();
@@ -207,6 +216,9 @@ function generate() {
         })
         .then(function(json) {
             json.accuracy >= 95? nomeConjugeGenero = json.gender : nomeConjugeGenero = 'indefinido';
+            console.log(json.accuracy);
+            console.log(json.gender);
+            console.log(nomeConjugeGenero);
         })
         .catch(function(erro){
             nomeConjugeGenero = 'indefinido';
@@ -217,13 +229,12 @@ function generate() {
         nomeConjugeGenero = 'indefinido';
     }
 
-    console.log(nomePrincipalGenero);
-    console.log(nomeConjugeGenero);
-
     loadFile(
         "https://servidor-estaticos-flame-eight.vercel.app/template.docx",
         function (error, content) {
             if (error) {
+                htmlBody.className.remove('loading');
+                mensagemCarregando.classList.add('hide');
                 throw error;
             }
             const zip = new PizZip(content);
@@ -371,6 +382,8 @@ function generate() {
             botaoGerador[0].classList.add('hide');
             mensagemSucesso[0].classList.remove('hide');
             elementoHeader[0].classList.add('party');
+            htmlBody.className.remove('loading');
+            mensagemCarregando.classList.add('hide');
         }
     );
 };
