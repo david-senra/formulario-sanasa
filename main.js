@@ -45,14 +45,14 @@ const todosInputs = document.getElementsByClassName('inputs');
 document.addEventListener('DOMContentLoaded', function() {
 
     function setConfiguracaoCivil() {
-        if (stateEstadoCivil[0].value === 'casado(a)' && stateRegimeBens[0].value !== 'comunhão') {
+        if (stateEstadoCivil[0].value === 'casad' && stateRegimeBens[0].value !== 'comunhão') {
             listaRegimeBens.classList.remove('hide');
             listaConjuge.classList.remove('hide');
             selectComunhao.classList.add('hide');
             estaCasado = true;
             estaEmComunhao = false;
         }
-        else if (stateEstadoCivil[0].value === 'casado(a)' && stateRegimeBens[0].value === 'comunhão') {
+        else if (stateEstadoCivil[0].value === 'casad' && stateRegimeBens[0].value === 'comunhão') {
             selectComunhao.classList.remove('hide');
             listaRegimeBens.classList.remove('hide');
             listaConjuge.classList.remove('hide');
