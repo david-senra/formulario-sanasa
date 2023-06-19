@@ -12,6 +12,9 @@ var vielaPresente = false;
 var servidaoPresente = false;
 var ambasPresentes = false;
 
+var nomePrincipalGenero = 'indefinido';
+var nomeConjugeGenero = 'indefinido';
+
 const mensagemSucesso = document.getElementsByClassName('success-message');
 const elementoHeader = document.getElementsByClassName('header');
 
@@ -123,6 +126,7 @@ function loadFile(url, callback) {
 }
 
 function generate() {
+
     const todosErros = document.getElementsByTagName('P');
     const arrayErros = Array.from(todosErros);
     arrayErros.forEach(element => {
@@ -164,6 +168,58 @@ function generate() {
         (inputsArrayComErros[0]).closest('.section').scrollIntoView({ behavior: 'smooth'})
         return;
     }
+
+    //AQUI
+    const arrayNomePrincipal = document.getElementById('1').value.split(" ");
+    const nomePrincipal = arrayNomePrincipal[0];
+    const linkNomePrincipal = `https://gender-api.com/get?name=${nomePrincipal}&key=54bnXdJgG83wgPqA64Mjz255VdZKULj3h267`
+    fetch(linkNomePrincipal)
+        .then(function(resposta){
+            if (resposta.ok) {
+                return resposta.json();
+            }
+            else {
+                nomePrincipalGenero = 'indefinido';
+                return
+            }
+        })
+        .then(function(json) {
+            json.accuracy >= 95? nomePrincipalGenero = json.gender : nomePrincipalGenero = 'indefinido';
+        })
+        .catch(function(erro){
+            nomePrincipalGenero = 'indefinido';
+            return
+        })
+
+    const arrayNomeConjuge = document.getElementById('9').value.split(" ");
+    const nomeConjuge = arrayNomeConjuge[0];
+    const linkNomeConjuge = `https://gender-api.com/get?name=${nomeConjuge}&key=54bnXdJgG83wgPqA64Mjz255VdZKULj3h267`
+    if (estaCasado == true) {
+        fetch(linkNomeConjuge)
+        .then(function(resposta){
+            if (resposta.ok) {
+                return resposta.json();
+            }
+            else {
+                nomeConjugeGenero = 'indefinido';
+                return
+            }
+        })
+        .then(function(json) {
+            json.accuracy >= 95? nomeConjugeGenero = json.gender : nomeConjugeGenero = 'indefinido';
+        })
+        .catch(function(erro){
+            nomeConjugeGenero = 'indefinido';
+            return
+        })
+    }
+    else {
+        nomeConjugeGenero = 'indefinido';
+    }
+
+    console.log(nomePrincipalGenero);
+    console.log(nomeConjugeGenero);
+
     loadFile(
         "https://servidor-estaticos-flame-eight.vercel.app/template.docx",
         function (error, content) {
@@ -191,8 +247,56 @@ function generate() {
             servidaoPresente = respostaFaixa == 'ambas' || respostaFaixa == 'servidao';
             ambasPresentes = respostaFaixa == 'ambas';
 
+            var situacaoCivil = "";
+            var portadorPrincipal = "";
+            var inscritoPrincipal = "";
+            var domiciliadoPrincipal = "";
+            var portadorConjuge = "";
+            var inscritoConjuge = "";
+
+            if (nomePrincipalGenero == male) {
+                portadorPrincipal = 'portador';
+                inscritoPrincipal = 'inscrito';
+                domiciliadoPrincipal = 'domiciliado';
+                situacaoCivil = `${document.getElementById('6').value}o`
+            }
+            else if (nomePrincipalGenero == female) {
+                portadorPrincipal = 'portadora';
+                inscritoPrincipal = 'inscrita';
+                domiciliadoPrincipal = 'domiciliada';
+                situacaoCivil = `${document.getElementById('6').value}a`
+            }
+            else {
+                portadorPrincipal = 'portador(a)';
+                inscritoPrincipal = 'inscrito(a)';
+                domiciliadoPrincipal = 'domiciliado(a)';
+                situacaoCivil = `${document.getElementById('6').value}o(a)`
+            }
+
+            if (estaCasado == true) {
+                domiciliadoPrincipal = 'domiciliados';
+            }
+
+            if (nomeConjugeGenero == male) {
+                portadorConjuge = 'portador';
+                inscritoConjuge = 'inscrito';
+            }
+            else if (nomeConjugeGenero == female) {
+                portadorConjuge = 'portadora';
+                inscritoConjuge = 'inscrita';
+            }
+            else {
+                portadorConjuge = 'portador(a)';
+                inscritoConjuge = 'inscrito(a)';
+            }
+
             // Render the document (Replace {first_name} by John, {last_name} by Doe, ...) 
             doc.render({
+                'portadorprincipal': portadorPrincipal,
+                'inscritoprincipal': inscritoPrincipal,
+                'domiciliadoprincipal': domiciliadoPrincipal,
+                'portadorconjuge': portadorConjuge,
+                'inscritoconjuge': inscritoConjuge,
                 'casado': estaCasado,
                 'comunhao': estaEmComunhao,
                 'escritura': temEscrituraPublica,
@@ -210,7 +314,7 @@ function generate() {
                 '3': document.getElementById('3').value,
                 '4': document.getElementById('4').value,
                 '5': document.getElementById('5').value,
-                '6': document.getElementById('6').value,
+                '6': situacaoCivil,
                 '7': document.getElementById('7').value,
                 '8': document.getElementById('8').value,
                 '9': document.getElementById('9').value,
