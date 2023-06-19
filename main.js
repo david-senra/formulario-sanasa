@@ -180,7 +180,7 @@ function generate() {
             const data3 = first1[2] + "/" + first1[1] + "/" + first1[0];
             const data4 = first2[2] + "/" + first2[1] + "/" + first2[0];
 
-            const respostaFaixa = document.getElementById('transcricao-matricula').value;
+            const respostaFaixa = document.getElementById('tipo-faixa').value;
 
             const vielaPresente = respostaFaixa == 'ambas' || respostaFaixa == 'viela';
             const servidaoPresente = respostaFaixa == 'ambas' || respostaFaixa == 'servidao';
