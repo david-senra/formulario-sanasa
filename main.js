@@ -1,8 +1,7 @@
 var blob = [];
 var nome = "";
 
-const elementosHTMLBody = document.getElementsByClassName('body');
-const htmlBody = elementosHTMLBody[0];
+const htmlBody = document.getElementById('body');
 var estaCasado = true;
 var estaEmComunhao = true;
 var temEscrituraPublica = true;
@@ -173,7 +172,7 @@ async function generate() {
 
     //AQUI
     const mensagemCarregando = document.getElementById('texto-carregando');
-    htmlBody.className.add('loading');
+    htmlBody.classList.add('loading');
     mensagemCarregando.classList.remove('hide');
 
     const arrayNomePrincipal = document.getElementById('1').value.split(" ");
