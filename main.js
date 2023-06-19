@@ -42,7 +42,6 @@ const formulario = document.getElementsByClassName('form');
 const todosInputs = document.getElementsByClassName('inputs');
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
 
     function setConfiguracaoCivil() {
@@ -263,23 +262,27 @@ async function generate() {
             var domiciliadoPrincipal = "";
             var portadorConjuge = "";
             var inscritoConjuge = "";
+            var proprietarioPrincipal = "";
 
             if (nomePrincipalGenero == 'male') {
                 portadorPrincipal = 'portador';
                 inscritoPrincipal = 'inscrito';
                 domiciliadoPrincipal = 'domiciliado';
+                proprietarioPrincipal = 'proprietário';
                 situacaoCivil = `${document.getElementById('6').value}o`
             }
             else if (nomePrincipalGenero == 'female') {
                 portadorPrincipal = 'portadora';
                 inscritoPrincipal = 'inscrita';
                 domiciliadoPrincipal = 'domiciliada';
+                proprietarioPrincipal = 'proprietária';
                 situacaoCivil = `${document.getElementById('6').value}a`
             }
             else {
                 portadorPrincipal = 'portador(a)';
                 inscritoPrincipal = 'inscrito(a)';
                 domiciliadoPrincipal = 'domiciliado(a)';
+                proprietarioPrincipal = 'proprietário(a)';
                 situacaoCivil = `${document.getElementById('6').value}o(a)`
             }
 
@@ -305,6 +308,7 @@ async function generate() {
                 'portadorprincipal': portadorPrincipal,
                 'inscritoprincipal': inscritoPrincipal,
                 'domiciliadoprincipal': domiciliadoPrincipal,
+                'proprietarioprincipal': proprietarioPrincipal,
                 'portadorconjuge': portadorConjuge,
                 'inscritoconjuge': inscritoConjuge,
                 'casado': estaCasado,
