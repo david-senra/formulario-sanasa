@@ -1,5 +1,3 @@
-
-
 const CLIENT_ID = '546084166162-k9p2vj4butvlbaips4cfe3lneblucs2u.apps.googleusercontent.com ';
 const API_KEY = 'AIzaSyC8xK1CONc7L5hOx6MhlGDa6k59BHpxE1k';
 
