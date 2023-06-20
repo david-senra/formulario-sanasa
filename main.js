@@ -1,7 +1,18 @@
 const CLIENT_ID = '546084166162-k9p2vj4butvlbaips4cfe3lneblucs2u.apps.googleusercontent.com ';
 const API_KEY = 'AIzaSyC8xK1CONc7L5hOx6MhlGDa6k59BHpxE1k';
 
+const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
 const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+
+const script1 = document.getElementById('scriptapi');
+const script2 = document.getElementById('scriptclient');
+
+script1.addEventListener('load', LoadSuccesful1());
+script2.addEventListener('load', LoadSuccesful2());
 
 var blob = [];
 var nome = "";
@@ -444,10 +455,7 @@ async function downloadFile() {
 	xhr.send(form);
 }
 
-const SCOPES = 'https://www.googleapis.com/auth/drive.file';
-let tokenClient;
-let gapiInited = false;
-let gisInited = false;
+
 
 function LoadSuccesful1() {
     console.log('vindo aqui')
