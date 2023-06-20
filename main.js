@@ -1,3 +1,8 @@
+const CLIENT_ID = '546084166162-k9p2vj4butvlbaips4cfe3lneblucs2u.apps.googleusercontent.com ';
+const API_KEY = 'AIzaSyC8xK1CONc7L5hOx6MhlGDa6k59BHpxE1k';
+
+const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+
 var blob = [];
 var nome = "";
 
@@ -391,6 +396,129 @@ async function generate() {
     );
 };
 
-function downloadFile() {
+async function downloadFile() {
     saveAs(blob, `${nome}-sanasa.docx`);
+
+    // envio para Google Drive
+    
+    var metadata = {
+        'name': 'formulario-sanasa', // Filename at Google Drive
+        'mimeType': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // mimeType at Google Drive
+        // TODO [Optional]: Set the below credentials
+        // Note: remove this parameter, if no target is needed
+        'parents': ['Teste'], // Folder ID at Google Drive which is optional
+    };
+    
+    var resposta = null;
+
+    while (resposta === null) {
+        if (gapi.client.getToken() === null) {
+            // Prompt the user to select a Google Account and ask for consent to share their data
+            // when establishing a new session.
+            console.log('é aqui?')
+            await tokenClient.requestAccessToken({ prompt: 'consent' });
+        } else {
+            // Skip display of account chooser and consent dialog for an existing session.
+            tokenClient.requestAccessToken({ prompt: '' });
+        }
+        resposta = gapi.auth.getToken().access_token;
+    }
+
+    var accessToken = resposta; // Here gapi is used for retrieving the access token.
+    var form = new FormData();
+    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+    form.append('file', blob);
+
+    console.log('chegou até aqui');
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('post', 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id');
+	xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+	xhr.responseType = 'json';
+    console.log('ultima etapa');
+    console.log(xhr);
+	xhr.onload = () => {
+		document.getElementById('content').innerHTML = "File uploaded successfully. The Google Drive file id is <b>" + xhr.response.id + "</b>";
+		document.getElementById('content').style.display = 'block';
+	};
+	xhr.send(form);
+}
+
+const SCOPES = 'https://www.googleapis.com/auth/drive.file';
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+function LoadSuccesful1() {
+    console.log('vindo aqui')
+    gapiLoaded();
+}
+
+function LoadSuccesful2() {
+    console.log('vindo aqui também')
+    gisLoaded();
+}
+
+function gapiLoaded() {
+	console.log("passou aqui");
+    gapi.load('client', initializeGapiClient);
+}
+
+/**
+ * Callback after the API client is loaded. Loads the
+ * discovery doc to initialize the API.
+ */
+async function initializeGapiClient() {
+    console.log("passou no Initialize Gapi")
+	await gapi.client.init({
+		apiKey: API_KEY,
+		discoveryDocs: [DISCOVERY_DOC],
+        response_type: 'token',
+	});
+	gapiInited = true;
+	maybeEnableUser();
+}
+
+/**
+ * Callback after Google Identity Services are loaded.
+ */
+var tokenResponse
+async function gisLoaded() {
+    console.log("passou no Gis Loaded")
+	tokenResponse = await google.accounts.oauth2.initTokenClient({
+		client_id: CLIENT_ID,
+		scope: SCOPES,
+		callback: '', // defined later
+	});
+	gisInited = true;
+    console.log(tokenResponse.callback);
+	maybeEnableUser();
+}
+
+function maybeEnableUser() {
+    console.log("passou no Maybe Enable User")
+	if (gapiInited && gisInited) {
+		handleAuthClick();
+	}
+}
+
+async function handleAuthClick() {
+    console.log("passou na autenticação")
+	tokenResponse.callback = async (resp) => {
+		if (resp.error !== undefined) {
+			throw (resp);
+		}
+	};
+
+    console.log(tokenResponse);
+
+	if (gapi.client.getToken() === null) {
+		// Prompt the user to select a Google Account and ask for consent to share their data
+		// when establishing a new session.
+        console.log('é aqui?')
+		await tokenResponse.requestAccessToken({ prompt: 'consent' });
+	} else {
+		// Skip display of account chooser and consent dialog for an existing session.
+		await tokenResponse.requestAccessToken({ prompt: '' });
+	}
 }

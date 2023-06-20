@@ -11,5 +11,10 @@
   "devDependencies": {
     "sass": "^1.63.4",
     "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "@types/node": "^20.3.1",
+    "dotenv": "^16.3.1",
+    "googleapis": "^118.0.0"
   }
 }
