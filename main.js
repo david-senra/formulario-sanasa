@@ -492,11 +492,12 @@ async function initializeGapiClient() {
 var tokenResponse
 async function gisLoaded() {
     console.log("passou no Gis Loaded")
-    tokenResponse = google.accounts.oauth2.initTokenClient({
+    tokenResponse = () => google.accounts.oauth2.initTokenClient({
         client_id: CLIENT_ID,
         scope: SCOPES,
-        callback: (tokenResponse) => {maybeEnableUser(tokenResponse)},
+        callback: '',
     })
+    maybeEnableUser();
 }
 
 function maybeEnableUser(token) {
@@ -510,8 +511,7 @@ function maybeEnableUser(token) {
 
 async function handleAuthClick(token) {
     console.log("passou na autenticação")
-    console.log(token);
-    if (token.error !== undefined) {
+    if (tokenResponse.callback.error !== undefined) {
         throw (token);
     }
 
