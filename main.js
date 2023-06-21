@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const CLIENT_ID = '546084166162-k9p2vj4butvlbaips4cfe3lneblucs2u.apps.googleusercontent.com ';
     const API_KEY = 'AIzaSyC8xK1CONc7L5hOx6MhlGDa6k59BHpxE1k';
 
+    var cliente;
+    var access_token;
+
     const SCOPES = 'https://www.googleapis.com/auth/drive.file';
     let tokenClient;
     let gapiInited = false;
@@ -419,9 +422,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'parents': ['Teste'], // Folder ID at Google Drive which is optional
         };
 
-        const resposta = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     
-        var accessToken = resposta; // Here gapi is used for retrieving the access token.
+        var accessToken = access_token; // Here gapi is used for retrieving the access token.
         var form = new FormData();
         form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
         form.append('file', blob);
@@ -475,17 +477,16 @@ document.addEventListener('DOMContentLoaded', function() {
     /**
      * Callback after Google Identity Services are loaded.
      */
-    var tokenResponse
     async function gisLoaded() {
         console.log("passou no Gis Loaded")
-        tokenResponse = await google.accounts.oauth2.initTokenClient({
-            response_type: 'code',
+        cliente = await google.accounts.oauth2.initTokenClient({
             client_id: CLIENT_ID,
             scope: SCOPES,
-            callback: '', // defined later
+            callback: (token) => {
+                access_token = token.access_token;
+            },
         });
         gisInited = true;
-        console.log(tokenResponse);
         maybeEnableUser();
     }
     
@@ -497,23 +498,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     async function handleAuthClick() {
-        console.log("passou na autenticação")
-        tokenResponse.callback = async (resp) => {
+        cliente.callback = async (resp) => {
             if (resp.error !== undefined) {
                 throw (resp);
             }
         };
     
-        console.log(tokenResponse);
-    
         if (gapi.client.getToken() === null) {
             // Prompt the user to select a Google Account and ask for consent to share their data
             // when establishing a new session.
             console.log('é aqui?')
-            await tokenResponse.requestAccessToken({ prompt: 'consent' });
+            await cliente.requestAccessToken({ prompt: 'consent' });
         } else {
             // Skip display of account chooser and consent dialog for an existing session.
-            await tokenResponse.requestAccessToken({ prompt: '' });
+            await cliente.requestAccessToken({ prompt: '' });
         }
     }
 
