@@ -464,12 +464,10 @@ function LoadSuccesful1() {
 }
 
 function LoadSuccesful2() {
-    console.log('vindo aqui também')
     gisLoaded();
 }
 
 function gapiLoaded() {
-	console.log("passou aqui");
     gapi.load('client', initializeGapiClient);
 }
 
@@ -483,7 +481,6 @@ async function initializeGapiClient() {
 		apiKey: API_KEY,
 		discoveryDocs: [DISCOVERY_DOC],
         response_type: 'token',
-		client_id: CLIENT_ID,
 	});
 	gapiInited = true;
 	maybeEnableUser();
@@ -495,13 +492,11 @@ async function initializeGapiClient() {
 var tokenResponse
 async function gisLoaded() {
     console.log("passou no Gis Loaded")
-    await function () {
-        tokenResponse = google.accounts.oauth2.initTokenClient({
-            client_id: CLIENT_ID,
-            scope: SCOPES,
-            callback: (tokenResponse) => {maybeEnableUser(tokenResponse)},
-        });
-    }
+    tokenResponse = google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: (tokenResponse) => {maybeEnableUser(tokenResponse)},
+    })
 }
 
 function maybeEnableUser(token) {
