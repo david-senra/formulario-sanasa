@@ -494,38 +494,30 @@ async function initializeGapiClient() {
  */
 var tokenResponse
 async function gisLoaded() {
-    
     console.log("passou no Gis Loaded")
     await function () {
         tokenResponse = google.accounts.oauth2.initTokenClient({
             client_id: CLIENT_ID,
             scope: SCOPES,
-            callback: '', // defined later
             state: 'access',
+            callback: (tokenResponse) => {maybeEnableUser(tokenResponse)},
         });
     }
-    gisInited = true;
-    console.log(tokenResponse.callback);
-    console.log(tokenResponse.state);
-    maybeEnableUser();
 }
 
-function maybeEnableUser() {
+function maybeEnableUser(token) {
     console.log("passou no Maybe Enable User")
 	if (gapiInited && gisInited) {
-		handleAuthClick();
+		handleAuthClick(token);
 	}
 }
 
-async function handleAuthClick() {
+async function handleAuthClick(token) {
     console.log("passou na autenticação")
-	tokenResponse.callback = async (resp) => {
-		if (resp.error !== undefined) {
-			throw (resp);
-		}
-	};
-
-    console.log(tokenResponse);
+    console.log(token);
+    if (token.error !== undefined) {
+        throw (token);
+    }
 
 	if (gapi.client.getToken() === null) {
 		// Prompt the user to select a Google Account and ask for consent to share their data
