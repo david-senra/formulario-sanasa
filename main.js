@@ -419,22 +419,8 @@ async function downloadFile() {
         // Note: remove this parameter, if no target is needed
         'parents': ['Teste'], // Folder ID at Google Drive which is optional
     };
-    
-    const key = req.cookies.get('key');
-    res.locals.user = key ? await AuthClient.getUser(key) : null;
 
-    while (resposta === null) {
-        if (gapi.client.getToken() === null) {
-            // Prompt the user to select a Google Account and ask for consent to share their data
-            // when establishing a new session.
-            console.log('é aqui?')
-            await tokenClient.requestAccessToken({ prompt: 'consent' });
-        } else {
-            // Skip display of account chooser and consent dialog for an existing session.
-            tokenClient.requestAccessToken({ prompt: '' });
-        }
-        resposta = gapi.auth.getToken().access_token;
-    }
+    const resposta = gapi.auth.getToken().access_token;
 
     var accessToken = resposta; // Here gapi is used for retrieving the access token.
     var form = new FormData();
@@ -499,6 +485,7 @@ async function gisLoaded() {
 		client_id: CLIENT_ID,
 		scope: SCOPES,
 		callback: '', // defined later
+        response_type: token,
 	});
 	gisInited = true;
     console.log(tokenResponse.callback);
