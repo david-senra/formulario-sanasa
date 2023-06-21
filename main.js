@@ -469,7 +469,6 @@ async function initializeGapiClient() {
 		apiKey: API_KEY,
 		discoveryDocs: [DISCOVERY_DOC],
         response_type: 'token',
-		client_id: CLIENT_ID,
 	});
 	gapiInited = true;
 	maybeEnableUser();
@@ -485,7 +484,6 @@ async function gisLoaded() {
 		client_id: CLIENT_ID,
 		scope: SCOPES,
 		callback: '', // defined later
-        response_type: token,
 	});
 	gisInited = true;
     console.log(tokenResponse.callback);
