@@ -501,6 +501,7 @@ async function gisLoaded() {
 
 function maybeEnableUser(token) {
     console.log("passou no Maybe Enable User")
+    gisInited = true;
 	if (gapiInited && gisInited) {
 		handleAuthClick(token);
 	}
