@@ -464,10 +464,12 @@ function LoadSuccesful1() {
 }
 
 function LoadSuccesful2() {
+    console.log('vindo aqui também')
     gisLoaded();
 }
 
 function gapiLoaded() {
+	console.log("passou aqui");
     gapi.load('client', initializeGapiClient);
 }
 
@@ -481,6 +483,7 @@ async function initializeGapiClient() {
 		apiKey: API_KEY,
 		discoveryDocs: [DISCOVERY_DOC],
         response_type: 'token',
+		client_id: CLIENT_ID,
 	});
 	gapiInited = true;
 	maybeEnableUser();
@@ -492,28 +495,32 @@ async function initializeGapiClient() {
 var tokenResponse
 async function gisLoaded() {
     console.log("passou no Gis Loaded")
-    tokenResponse = () => google.accounts.oauth2.initTokenClient({
-        client_id: CLIENT_ID,
-        scope: SCOPES,
-        callback: '',
-    })
-    maybeEnableUser();
+	tokenResponse = await google.accounts.oauth2.initTokenClient({
+		client_id: CLIENT_ID,
+		scope: SCOPES,
+		callback: '', // defined later
+	});
+	gisInited = true;
+    console.log(tokenResponse.callback);
+	maybeEnableUser();
 }
 
-function maybeEnableUser(token) {
+function maybeEnableUser() {
     console.log("passou no Maybe Enable User")
-    console.log(token);
-    gisInited = true;
 	if (gapiInited && gisInited) {
-		handleAuthClick(token);
+		handleAuthClick();
 	}
 }
 
-async function handleAuthClick(token) {
+async function handleAuthClick() {
     console.log("passou na autenticação")
-    if (tokenResponse.callback.error !== undefined) {
-        throw (token);
-    }
+	tokenResponse.callback = async (resp) => {
+		if (resp.error !== undefined) {
+			throw (resp);
+		}
+	};
+
+    console.log(tokenResponse);
 
 	if (gapi.client.getToken() === null) {
 		// Prompt the user to select a Google Account and ask for consent to share their data
