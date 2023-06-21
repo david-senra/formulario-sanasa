@@ -418,8 +418,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Note: remove this parameter, if no target is needed
             'parents': ['Teste'], // Folder ID at Google Drive which is optional
         };
-        
-        const resposta = gapi.auth.getToken().access_token;
+
+        const resposta = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
     
         var accessToken = resposta; // Here gapi is used for retrieving the access token.
         var form = new FormData();
