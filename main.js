@@ -499,7 +499,6 @@ async function gisLoaded() {
         tokenResponse = google.accounts.oauth2.initTokenClient({
             client_id: CLIENT_ID,
             scope: SCOPES,
-            state: 'access',
             callback: (tokenResponse) => {maybeEnableUser(tokenResponse)},
         });
     }
