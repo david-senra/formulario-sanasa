@@ -419,7 +419,8 @@ async function downloadFile() {
         // Note: remove this parameter, if no target is needed
         'parents': ['Teste'], // Folder ID at Google Drive which is optional
     };
-
+    credential.refreshToken();
+    accessToken = credential.getAccessToken();
     const resposta = gapi.auth.getToken().access_token;
 
     var accessToken = resposta; // Here gapi is used for retrieving the access token.
@@ -468,7 +469,6 @@ async function initializeGapiClient() {
 	await gapi.client.init({
 		apiKey: API_KEY,
 		discoveryDocs: [DISCOVERY_DOC],
-        response_type: 'token',
 	});
 	gapiInited = true;
 	maybeEnableUser();
@@ -481,12 +481,13 @@ var tokenResponse
 async function gisLoaded() {
     console.log("passou no Gis Loaded")
 	tokenResponse = await google.accounts.oauth2.initTokenClient({
+        response_type: code,
 		client_id: CLIENT_ID,
 		scope: SCOPES,
 		callback: '', // defined later
 	});
 	gisInited = true;
-    console.log(tokenResponse.callback);
+    console.log(tokenResponse);
 	maybeEnableUser();
 }
 
