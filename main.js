@@ -481,7 +481,7 @@ var tokenResponse
 async function gisLoaded() {
     console.log("passou no Gis Loaded")
 	tokenResponse = await google.accounts.oauth2.initTokenClient({
-        response_type: code,
+        response_type: 'code',
 		client_id: CLIENT_ID,
 		scope: SCOPES,
 		callback: '', // defined later
