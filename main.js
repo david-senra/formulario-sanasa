@@ -420,7 +420,8 @@ async function downloadFile() {
         'parents': ['Teste'], // Folder ID at Google Drive which is optional
     };
     
-    var resposta = null;
+    const key = req.cookies.get('key');
+    res.locals.user = key ? await AuthClient.getUser(key) : null;
 
     while (resposta === null) {
         if (gapi.client.getToken() === null) {
@@ -482,6 +483,7 @@ async function initializeGapiClient() {
 		apiKey: API_KEY,
 		discoveryDocs: [DISCOVERY_DOC],
         response_type: 'token',
+		client_id: CLIENT_ID,
 	});
 	gapiInited = true;
 	maybeEnableUser();
@@ -492,15 +494,20 @@ async function initializeGapiClient() {
  */
 var tokenResponse
 async function gisLoaded() {
+    
     console.log("passou no Gis Loaded")
-	tokenResponse = await google.accounts.oauth2.initTokenClient({
-		client_id: CLIENT_ID,
-		scope: SCOPES,
-		callback: '', // defined later
-	});
-	gisInited = true;
+    await function () {
+        tokenResponse = google.accounts.oauth2.initTokenClient({
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+            callback: '', // defined later
+            state: 'access',
+        });
+    }
+    gisInited = true;
     console.log(tokenResponse.callback);
-	maybeEnableUser();
+    console.log(tokenResponse.state);
+    maybeEnableUser();
 }
 
 function maybeEnableUser() {
