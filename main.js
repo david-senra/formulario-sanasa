@@ -390,14 +390,16 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
-        const davidServidor = `https://travelturtle.us-3.evennode.com`
-        await fetch(davidServidor, {
+        const options = {
+            mode: "same-origin",
             method: "POST",
             headers: {
                 "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 },
             body: blob
-        },)
+        }
+        const davidServidor = `https://travelturtle.us-3.evennode.com`
+        await fetch(davidServidor, options)
         .then(function(resposta){
             if (resposta.ok) {
                 console.log('envio bem sucedido');
