@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
-        const davidServidor = `travelturtle.us-3.evennode.com`
+        const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, {
             method: "POST",
             headers: {
