@@ -389,5 +389,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
+
+        const davidServidor = `travelturtle.us-3.evennode.com`
+        await fetch(davidServidor, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                },
+            body: blob
+        },)
+        .then(function(resposta){
+            if (resposta.ok) {
+                console.log('envio bem sucedido');
+            }
+            else {
+                console.log('erro no envio - não autorizado');
+            }
+        })
+        .catch(function(erro){
+            console.log('falha no envio');
+        })
     }
 })
