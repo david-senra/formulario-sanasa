@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
             body: blob
         }
-        const davidServidor = `https://travelturtle.us-3.evennode.com`
+        const davidServidor = `http://travelturtle.us-3.evennode.com/`
         await fetch(davidServidor, options)
         .then(function(resposta){
             if (resposta.ok) {
