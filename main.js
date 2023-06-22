@@ -391,7 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
         const options = {
-            mode: "same-origin",
             method: "POST",
             headers: {
                 "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
