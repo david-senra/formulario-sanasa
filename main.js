@@ -389,12 +389,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
+        var fileBlob = new File(blob, `${nome}-sanasa.docx`);
 
         const data = new FormData();
-        data.append('file', blob, {
-            contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            filename: 'sanasa.docx',
-        });
+        data.append('file', fileBlob);
 
         console.log(data);
 
