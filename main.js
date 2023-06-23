@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var data = new File([blob], `${nome}-sanasa.docx`);
         const formData = new FormData;
         formData.append('nome', `${nome}-sanasa`)
-        formData.append('file', blob)
+        formData.append('file', data)
 
         const options = {
             method: "POST",
