@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
 
 document.addEventListener('DOMContentLoaded', function() {
     var blob = [];
@@ -404,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: "POST",
             body: buf,
         }
-        
+
         const davidServidor = `http://localhost:8000`
         await fetch(davidServidor, options)
         .then(function(resposta){
