@@ -389,14 +389,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
-        var newFile = new File([blob], `${nome}-sanasa.docx`);
+
+        const form = new FormData();
+        form.append('file', blob, {
+            contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            filename: 'sanasa.docx',
+        });
 
         const options = {
             method: "POST",
             headers: {
                 "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 },
-            body: newFile
+            body: form
         }
         const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, options)
@@ -408,6 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('erro no envio - não autorizado');
             }
         })
+        .then(data => console.log(data))
         .catch(function(erro){
             console.log('falha no envio');
         })
