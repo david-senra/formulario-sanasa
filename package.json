@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@types/node": "^20.3.1",
+    "buffer": "^6.0.3",
     "dotenv": "^16.3.1",
-    "googleapis": "^118.0.0"
+    "googleapis": "^118.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   }
 }
