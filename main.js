@@ -389,14 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
-        var fileBlob = new File([blob], `${nome}-sanasa.docx`);
-        
-        console.log(fileBlob);
-
-        const data = new FormData();
-        data.append('file', fileBlob);
-
-        console.log(data);
+        var data = new File([blob], `${nome}-sanasa.docx`);
 
         const options = {
             method: "POST",
