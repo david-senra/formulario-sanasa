@@ -389,13 +389,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
+        var newFile = new File([blob], `${nome}-sanasa.docx`);
 
         const options = {
             method: "POST",
             headers: {
                 "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 },
-            body: blob
+            body: newFile
         }
         const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, options)
