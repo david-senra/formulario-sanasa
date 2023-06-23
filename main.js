@@ -390,10 +390,13 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
         var data = new File([blob], `${nome}-sanasa.docx`);
+        const formData = new FormData;
+        formData.append('nome', `${nome}-sanasa`)
+        formData.append('file', blob)
 
         const options = {
             method: "POST",
-            body: data,
+            body: formData,
         }
         const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, options)
