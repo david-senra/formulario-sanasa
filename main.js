@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const options = {
             method: "POST",
-            body: data
+            body: data,
         }
         const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, options)
