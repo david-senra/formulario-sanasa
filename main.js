@@ -363,6 +363,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     '42': document.getElementById('42').value,
                     '43': document.getElementById('43').value,
                 });
+
+                console.log(doc);
                 
                 blob = doc.getZip().generate({
                     type: "blob",
@@ -390,6 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
         var data = new File([blob], `${nome}-sanasa.docx`);
+
         const formData = new FormData;
         formData.append('nome', `${nome}-sanasa`)
         formData.append('file', data)
