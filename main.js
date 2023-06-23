@@ -390,20 +390,17 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
-        const form = new FormData();
-        form.append('file', blob, {
+        const data = new FormData();
+        data.append('file', blob, {
             contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             filename: 'sanasa.docx',
         });
 
-        console.log(form);
+        console.log(data);
 
         const options = {
             method: "POST",
-            headers: {
-                "Content-Type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                },
-            body: form
+            body: data
         }
         const davidServidor = `https://travelturtle.us-3.evennode.com`
         await fetch(davidServidor, options)
