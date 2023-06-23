@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: "POST",
             body: formData,
         }
-        const davidServidor = `https://travelturtle.us-3.evennode.com`
+        const davidServidor = `http://localhost:8000`
         await fetch(davidServidor, options)
         .then(function(resposta){
             if (resposta.ok) {
