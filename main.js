@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var blob = [];
+    var buf = [];
     var nome = "";
 
     const htmlBody = document.getElementById('body');
@@ -375,6 +376,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     compression: "DEFLATE",
                 });
                 // Output the document using Data-URI
+
+                buf = doc.getZip().generate({
+                    type: "nodebuffer",
+                    // compression: DEFLATE adds a compression step.
+                    // For a 50MB output document, expect 500ms additional CPU time
+                    compression: "DEFLATE",
+                });
                 
                 const nomeArquivo = document.getElementById('1').value;
                 nome = nomeArquivo.replace(/\s+/g, '-').toLowerCase();
@@ -391,16 +399,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
-        var data = new File([blob], `${nome}-sanasa.docx`);
-
-        const formData = new FormData;
-        formData.append('nome', `${nome}-sanasa`)
-        formData.append('file', data)
 
         const options = {
             method: "POST",
-            body: formData,
+            body: buf,
         }
+        
         const davidServidor = `http://localhost:8000`
         await fetch(davidServidor, options)
         .then(function(resposta){
