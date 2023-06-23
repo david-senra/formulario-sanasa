@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Output the document using Data-URI
 
                 buf = doc.getZip().generate({
-                    type: "nodebuffer",
+                    type: "arraybuffer",
                     // compression: DEFLATE adds a compression step.
                     // For a 50MB output document, expect 500ms additional CPU time
                     compression: "DEFLATE",
