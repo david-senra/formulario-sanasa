@@ -396,6 +396,8 @@ document.addEventListener('DOMContentLoaded', function() {
             filename: 'sanasa.docx',
         });
 
+        console.log(form);
+
         const options = {
             method: "POST",
             headers: {
