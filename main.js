@@ -395,6 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data.append('file', fileBlob);
 
         console.log(data);
+        console.log(fileBlob);
 
         const options = {
             method: "POST",
