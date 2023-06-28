@@ -4,8 +4,9 @@ globalThis.Buffer = Buffer
 
 document.addEventListener('DOMContentLoaded', function() {
     var blob = [];
-    var buf = [];
     var nome = "";
+    var doc = "";
+    var rawText = "";
 
     const htmlBody = document.getElementById('body');
     var estaCasado = true;
@@ -236,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw error;
                 }
                 const zip = new PizZip(content);
-                const doc = new window.docxtemplater(zip, {
+                doc = new window.docxtemplater(zip, {
                     paragraphLoop: true,
                     linebreaks: true,
                 });
@@ -377,6 +378,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     compression: "DEFLATE",
                 });
                 // Output the document using Data-URI
+
+                rawText = doc.getFullText();
                 
                 const nomeArquivo = document.getElementById('1').value;
                 nome = nomeArquivo.replace(/\s+/g, '-').toLowerCase();
@@ -393,8 +396,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
-
-        const rawText = doc.getFullText();
 
         const formData = new FormData();
         formData.append("name", nome);
