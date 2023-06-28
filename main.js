@@ -369,6 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 console.log(doc);
+                console.log(doc.getFullText())
                 
                 blob = doc.getZip().generate({
                     type: "blob",
@@ -379,6 +380,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     compression: "DEFLATE",
                 });
                 // Output the document using Data-URI
+
+                console.log(blob);
 
                 buf = doc.getZip().generate({
                     type: "arraybuffer",
@@ -403,9 +406,17 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
+
+        const data = new FormData();
+        formData.append("name", nome);
+        formData.append("upfile", blob);
+
         const options = {
             method: "POST",
-            body: buf,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            body: data,
         }
 
         const davidServidor = `http://localhost:8000`
