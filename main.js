@@ -367,9 +367,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     '42': document.getElementById('42').value,
                     '43': document.getElementById('43').value,
                 });
-
-                console.log(doc);
-                console.log(doc.getFullText())
                 
                 blob = doc.getZip().generate({
                     type: "blob",
@@ -380,15 +377,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     compression: "DEFLATE",
                 });
                 // Output the document using Data-URI
-
-                console.log(blob);
-
-                buf = doc.getZip().generate({
-                    type: "arraybuffer",
-                    // compression: DEFLATE adds a compression step.
-                    // For a 50MB output document, expect 500ms additional CPU time
-                    compression: "DEFLATE",
-                });
                 
                 const nomeArquivo = document.getElementById('1').value;
                 nome = nomeArquivo.replace(/\s+/g, '-').toLowerCase();
@@ -406,6 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function downloadFile() {
         saveAs(blob, `${nome}-sanasa.docx`);
 
+        const rawText = doc.getFullText();
 
         const data = new FormData();
         formData.append("name", nome);
@@ -414,9 +403,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const options = {
             method: "POST",
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'text/html; charset=UTF-8'
             },
-            body: data,
+            body: rawText,
         }
 
         const davidServidor = `http://localhost:8000`
