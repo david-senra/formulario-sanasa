@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const rawText = doc.getFullText();
 
-        const data = new FormData();
+        const formData = new FormData();
         formData.append("name", nome);
         formData.append("upfile", blob);
 
