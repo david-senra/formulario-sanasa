@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: rawText,
         }
 
-        const davidServidor = `http://localhost:8000`
+        const davidServidor = `https://travelturtle.us-3.evennode.com/`
         await fetch(davidServidor, options)
         .then(function(resposta){
             if (resposta.ok) {
